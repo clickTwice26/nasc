@@ -1,0 +1,1086 @@
+[
+ {
+  "id": "haughton-hmp",
+  "name": "Haughton Crater / Haughton-Mars Project (Devon Island)",
+  "country": "Canada",
+  "lat": 75.43,
+  "lon": -89.85,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "impact",
+   "polar",
+   "isolation",
+   "mobility",
+   "astrobiology",
+   "ice"
+  ],
+  "programs": [
+   "NASA Haughton-Mars Project (HMP)"
+  ],
+  "agency": [
+   "NASA",
+   "CSA"
+  ],
+  "note": "~23 km, ~31 Ma impact crater in polar desert with permafrost and ground ice; HMP base camp on the NW rim has hosted NASA rover/EVA/spacesuit tests since 1997.",
+  "source": {
+   "label": "Mars Institute – Haughton-Mars Project",
+   "url": "https://www.marsonearth.org/"
+  },
+  "facility": false
+ },
+ {
+  "id": "fmars",
+  "name": "Flashline Mars Arctic Research Station (FMARS)",
+  "country": "Canada",
+  "lat": 75.4314,
+  "lon": -89.8236,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "isolation",
+   "polar",
+   "impact"
+  ],
+  "programs": [
+   "Mars Society FMARS",
+   "Mars 160"
+  ],
+  "agency": [
+   "Mars Society"
+  ],
+  "note": "Mars Society habitat on the rim of Haughton Crater used for long-duration crewed Mars simulations (e.g., Mars 160 Arctic phase).",
+  "source": {
+   "label": "Mars Society – FMARS",
+   "url": "https://fmars.marssociety.org/"
+  },
+  "facility": false
+ },
+ {
+  "id": "mdrs",
+  "name": "Mars Desert Research Station (Hanksville, Utah)",
+  "country": "USA",
+  "lat": 38.4064,
+  "lon": -110.7919,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "isolation",
+   "mobility",
+   "astrobiology",
+   "evaporite"
+  ],
+  "programs": [
+   "Mars Society MDRS"
+  ],
+  "agency": [
+   "Mars Society"
+  ],
+  "note": "Habitat amid Jurassic–Cretaceous red-bed, gypsum and bentonite terrains of the San Rafael Swell area; >300 crew rotations of Mars EVA simulations.",
+  "source": {
+   "label": "Mars Society – MDRS",
+   "url": "https://mdrs.marssociety.org/"
+  },
+  "facility": false
+ },
+ {
+  "id": "hi-seas",
+  "name": "HI-SEAS habitat (Mauna Loa)",
+  "country": "USA",
+  "lat": 19.602,
+  "lon": -155.487,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "isolation",
+   "volcanic",
+   "lava-tube"
+  ],
+  "programs": [
+   "HI-SEAS (NASA HRP-funded missions I–VI)"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "Geodesic habitat at ~2,500 m on barren basaltic lava of Mauna Loa used for 4–12-month isolation/crew-cohesion studies.",
+  "source": {
+   "label": "HI-SEAS",
+   "url": "https://hi-seas.org/"
+  },
+  "facility": false
+ },
+ {
+  "id": "mauna-kea-pisces",
+  "name": "Mauna Kea ISRU test site (Pu'u Hiwahine, PISCES)",
+  "country": "USA",
+  "lat": 19.77,
+  "lon": -155.44,
+  "analog_for": [
+   "moon"
+  ],
+  "themes": [
+   "isru",
+   "volcanic",
+   "mobility"
+  ],
+  "programs": [
+   "NASA/CSA ILSO-ISRU field tests 2008/2010/2012",
+   "RESOLVE",
+   "PISCES"
+  ],
+  "agency": [
+   "NASA",
+   "CSA",
+   "DLR"
+  ],
+  "note": "Tephra/cinder-rich slopes used for regolith excavation, oxygen extraction and RESOLVE volatile-prospecting rover tests; approximate coordinates of the Pu'u Hiwahine test area.",
+  "source": {
+   "label": "NTRS: ISRU field tests 2010 and 2012 at Mauna Kea",
+   "url": "https://ntrs.nasa.gov/citations/20140008708"
+  },
+  "facility": false
+ },
+ {
+  "id": "black-point-lava-flow",
+  "name": "Black Point Lava Flow (Desert RATS)",
+  "country": "USA",
+  "lat": 35.69,
+  "lon": -111.46,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "volcanic",
+   "mobility",
+   "arid"
+  ],
+  "programs": [
+   "NASA Desert RATS"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "Basaltic flow in the San Francisco Volcanic Field where NASA tested the Space Exploration Vehicle, habitats and multi-day pressurized-rover traverses (2008–2011).",
+  "source": {
+   "label": "LPI Lunar Analog – Black Point Lava Flow",
+   "url": "https://www.lpi.usra.edu/lunar/analogs/blackpoint/"
+  },
+  "facility": false
+ },
+ {
+  "id": "meteor-crater",
+  "name": "Meteor Crater (Barringer Crater)",
+  "country": "USA",
+  "lat": 35.0274,
+  "lon": -111.0225,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "impact",
+   "arid",
+   "mobility"
+  ],
+  "programs": [
+   "Apollo astronaut geology training",
+   "NASA EVA/suit tests"
+  ],
+  "agency": [
+   "NASA",
+   "USGS"
+  ],
+  "note": "Best-preserved simple impact crater on Earth (~1.2 km, ~50 ka); classic Apollo training site for crater ejecta and shock-metamorphism.",
+  "source": {
+   "label": "Meteor Crater",
+   "url": "https://en.wikipedia.org/wiki/Meteor_Crater"
+  },
+  "facility": false
+ },
+ {
+  "id": "craters-of-the-moon",
+  "name": "Craters of the Moon National Monument",
+  "country": "USA",
+  "lat": 43.4167,
+  "lon": -113.5167,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "volcanic",
+   "lava-tube",
+   "mobility"
+  ],
+  "programs": [
+   "NASA BASALT",
+   "NASA SSERVI FINESSE",
+   "Apollo 14 training"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "Young basaltic lava field with lava tubes, spatter cones and rifts used for Mars basalt EVA science-operations tests (BASALT) and lunar volcanism studies (FINESSE).",
+  "source": {
+   "label": "NPS – Craters of the Moon",
+   "url": "https://www.nps.gov/crmo/"
+  },
+  "facility": false
+ },
+ {
+  "id": "lava-beds",
+  "name": "Lava Beds National Monument",
+  "country": "USA",
+  "lat": 41.7136,
+  "lon": -121.509,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "lava-tube",
+   "volcanic",
+   "astrobiology",
+   "ice"
+  ],
+  "programs": [
+   "NASA BRAILLE",
+   "NASA cave robotics tests"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "More than 700 lava-tube caves, some with perennial ice, used to test robotic cave mapping and cave-microbe life detection for Mars/Moon lava tubes.",
+  "source": {
+   "label": "NPS – Lava Beds",
+   "url": "https://www.nps.gov/labe/"
+  },
+  "facility": false
+ },
+ {
+  "id": "rio-tinto",
+  "name": "Río Tinto (Peña de Hierro)",
+  "country": "Spain",
+  "lat": 37.721,
+  "lon": -6.556,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "astrobiology",
+   "evaporite",
+   "isru"
+  ],
+  "programs": [
+   "NASA MARTE drilling",
+   "CAB (INTA-CSIC)"
+  ],
+  "agency": [
+   "NASA",
+   "ESA"
+  ],
+  "note": "Extremely acidic (pH ~2), iron-rich river and subsurface with jarosite/hematite similar to Meridiani; used for robotic subsurface life-detection drilling.",
+  "source": {
+   "label": "Río Tinto",
+   "url": "https://en.wikipedia.org/wiki/Rio_Tinto_(river)"
+  },
+  "facility": false
+ },
+ {
+  "id": "amase-svalbard",
+  "name": "AMASE – Bockfjord Volcanic Complex (Sverrefjell), Svalbard",
+  "country": "Norway",
+  "lat": 79.43,
+  "lon": 13.33,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "volcanic",
+   "polar",
+   "astrobiology",
+   "ice"
+  ],
+  "programs": [
+   "AMASE (Arctic Mars Analog Svalbard Expedition)"
+  ],
+  "agency": [
+   "NASA",
+   "ESA"
+  ],
+  "note": "Volcanoes erupted under ice host carbonate globules like those in Martian meteorite ALH84001; used to test MSL/ExoMars instruments.",
+  "source": {
+   "label": "AMASE",
+   "url": "https://en.wikipedia.org/wiki/Arctic_Mars_Analog_Svalbard_Expedition"
+  },
+  "facility": false
+ },
+ {
+  "id": "lanzarote",
+  "name": "Lanzarote (La Corona lava tube / Timanfaya)",
+  "country": "Spain",
+  "lat": 29.158,
+  "lon": -13.438,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "volcanic",
+   "lava-tube",
+   "mobility"
+  ],
+  "programs": [
+   "ESA PANGAEA",
+   "ESA CAVES"
+  ],
+  "agency": [
+   "ESA"
+  ],
+  "note": "UNESCO Geopark with ~8 km La Corona lava tube and young Timanfaya basalts used for ESA astronaut geology training and cave exploration.",
+  "source": {
+   "label": "ESA – CAVES and PANGAEA",
+   "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/CAVES_and_Pangaea"
+  },
+  "facility": false
+ },
+ {
+  "id": "ries-crater",
+  "name": "Nördlinger Ries impact crater",
+  "country": "Germany",
+  "lat": 48.88,
+  "lon": 10.56,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "impact"
+  ],
+  "programs": [
+   "ESA PANGAEA",
+   "Apollo 14 training (1970)"
+  ],
+  "agency": [
+   "ESA",
+   "NASA"
+  ],
+  "note": "~24 km, 14.8 Ma complex crater with suevite impact breccias; ESA astronaut geology training ground.",
+  "source": {
+   "label": "ESA – CAVES and PANGAEA",
+   "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/CAVES_and_Pangaea"
+  },
+  "facility": false
+ },
+ {
+  "id": "holuhraun",
+  "name": "Holuhraun lava field",
+  "country": "Iceland",
+  "lat": 64.87,
+  "lon": -16.83,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "volcanic",
+   "mobility",
+   "astrobiology"
+  ],
+  "programs": [
+   "NASA PSTAR SAND-E",
+   "Artemis/ESA astronaut geology field training"
+  ],
+  "agency": [
+   "NASA",
+   "ESA"
+  ],
+  "note": "2014–15 flood-basalt eruption with fresh basaltic sand plains used as a Mars-like terrain for rover autonomy and sediment studies.",
+  "source": {
+   "label": "Holuhraun",
+   "url": "https://en.wikipedia.org/wiki/Holuhraun"
+  },
+  "facility": false
+ },
+ {
+  "id": "pavilion-lake",
+  "name": "Pavilion Lake",
+  "country": "Canada",
+  "lat": 50.865,
+  "lon": -121.743,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "astrobiology",
+   "mobility"
+  ],
+  "programs": [
+   "Pavilion Lake Research Project (PLRP)"
+  ],
+  "agency": [
+   "NASA",
+   "CSA"
+  ],
+  "note": "Freshwater lake with rare modern microbialites explored with DeepWorker submersibles to rehearse science operations and biosignature search.",
+  "source": {
+   "label": "Pavilion Lake",
+   "url": "https://en.wikipedia.org/wiki/Pavilion_Lake"
+  },
+  "facility": false
+ },
+ {
+  "id": "axel-heiberg",
+  "name": "Axel Heiberg Island – Gypsum Hill perennial springs",
+  "country": "Canada",
+  "lat": 79.403,
+  "lon": -90.729,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "polar",
+   "ice",
+   "astrobiology",
+   "evaporite"
+  ],
+  "programs": [
+   "McGill Arctic Research Station"
+  ],
+  "agency": [
+   "CSA",
+   "NASA"
+  ],
+  "note": "Cold, hypersaline perennial springs flowing through ~600 m of permafrost at -15 C mean air temperature; analog for Martian subsurface brines.",
+  "source": {
+   "label": "McGill Arctic Research Station",
+   "url": "https://en.wikipedia.org/wiki/McGill_Arctic_Research_Station"
+  },
+  "facility": false
+ },
+ {
+  "id": "concordia",
+  "name": "Concordia Station (Dome C)",
+  "country": "Antarctica (France/Italy)",
+  "lat": -75.0997,
+  "lon": 123.3326,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "isolation",
+   "polar",
+   "ice"
+  ],
+  "programs": [
+   "ESA Concordia winter-over studies"
+  ],
+  "agency": [
+   "ESA"
+  ],
+  "note": "3,233 m high-plateau station with ~9 months isolation, hypobaric hypoxia and winter lows near -80 C; ESA's long-duration isolation analog.",
+  "source": {
+   "label": "ESA – Concordia",
+   "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Concordia"
+  },
+  "facility": false
+ },
+ {
+  "id": "mcmurdo-dry-valleys",
+  "name": "McMurdo Dry Valleys (Wright Valley / Lake Vanda)",
+  "country": "Antarctica",
+  "lat": -77.53,
+  "lon": 161.58,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "polar",
+   "arid",
+   "ice",
+   "astrobiology"
+  ],
+  "programs": [
+   "NASA ASTEP",
+   "NSF LTER"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "Coldest, driest ice-free terrain on Earth with ground ice, polygons and ice-covered lakes; premier Mars periglacial and life-limit analog.",
+  "source": {
+   "label": "McMurdo Dry Valleys",
+   "url": "https://en.wikipedia.org/wiki/McMurdo_Dry_Valleys"
+  },
+  "facility": false
+ },
+ {
+  "id": "don-juan-pond",
+  "name": "Don Juan Pond",
+  "country": "Antarctica",
+  "lat": -77.5626,
+  "lon": 161.1886,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "evaporite",
+   "polar",
+   "astrobiology"
+  ],
+  "programs": [
+   "NASA Mars brine studies"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "CaCl2-saturated pond that stays liquid below -50 C; analog for deliquescent brines and recurring slope lineae.",
+  "source": {
+   "label": "Don Juan Pond",
+   "url": "https://en.wikipedia.org/wiki/Don_Juan_Pond"
+  },
+  "facility": false
+ },
+ {
+  "id": "atacama-yungay",
+  "name": "Atacama Desert – Yungay",
+  "country": "Chile",
+  "lat": -24.1,
+  "lon": -70.02,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "astrobiology",
+   "evaporite",
+   "mobility"
+  ],
+  "programs": [
+   "NASA ARADS",
+   "NASA ASTEP Life in the Atacama"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "Hyperarid core with nitrate/perchlorate soils near the dry limit of life; used for autonomous rover drilling and biosignature detection.",
+  "source": {
+   "label": "Atacama Desert",
+   "url": "https://en.wikipedia.org/wiki/Atacama_Desert"
+  },
+  "facility": false
+ },
+ {
+  "id": "dhofar-amadee-18",
+  "name": "Dhofar desert (AMADEE-18)",
+  "country": "Oman",
+  "lat": 18.1,
+  "lon": 55.2,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "isolation",
+   "mobility",
+   "astrobiology"
+  ],
+  "programs": [
+   "OeWF AMADEE-18"
+  ],
+  "agency": [
+   "OeWF"
+  ],
+  "note": "Feb 2018 four-week Mars field simulation with crew habitat in the Dhofar desert near Marmul; coordinates approximate.",
+  "source": {
+   "label": "OeWF – AMADEE-18",
+   "url": "https://oewf.org/en/portfolio/amadee-18/"
+  },
+  "facility": false
+ },
+ {
+  "id": "ramon-amadee-20",
+  "name": "Ramon Crater (AMADEE-20, D-MARS habitat)",
+  "country": "Israel",
+  "lat": 30.59,
+  "lon": 34.8,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "isolation",
+   "mobility"
+  ],
+  "programs": [
+   "OeWF AMADEE-20",
+   "D-MARS"
+  ],
+  "agency": [
+   "OeWF",
+   "Israel Space Agency"
+  ],
+  "note": "Erosional makhtesh in the Negev near Mitzpe Ramon; Oct 2021 Mars simulation with 6 analog astronauts; coordinates approximate.",
+  "source": {
+   "label": "OeWF – AMADEE-20",
+   "url": "https://oewf.org/en/2021/10/picture-of-the-day-amadee20/"
+  },
+  "facility": false
+ },
+ {
+  "id": "armash-amadee-24",
+  "name": "Armash (AMADEE-24)",
+  "country": "Armenia",
+  "lat": 39.77,
+  "lon": 44.81,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "isolation",
+   "mobility"
+  ],
+  "programs": [
+   "OeWF AMADEE-24"
+  ],
+  "agency": [
+   "OeWF",
+   "Armenian Aerospace Agency"
+  ],
+  "note": "March–April 2024 Mars analog mission near Armash village, Ararat province; coordinates approximate.",
+  "source": {
+   "label": "OeWF – AMADEE-24",
+   "url": "https://oewf.org/en/amadee-24/"
+  },
+  "facility": false
+ },
+ {
+  "id": "qaidam-dalangtan",
+  "name": "Qaidam Basin – Dalangtan playa",
+  "country": "China",
+  "lat": 38.5,
+  "lon": 91.5,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "evaporite",
+   "astrobiology"
+  ],
+  "programs": [
+   "China University of Geosciences Mars analog studies"
+  ],
+  "agency": [
+   "CNSA"
+  ],
+  "note": "High (~2,700 m), hyperarid salt playas with sulfates, chlorides and yardangs widely cited as China's prime Mars analog; coordinates approximate.",
+  "source": {
+   "label": "Qaidam Basin",
+   "url": "https://en.wikipedia.org/wiki/Qaidam_Basin"
+  },
+  "facility": false
+ },
+ {
+  "id": "jinchang-mars-base-1",
+  "name": "Mars Base 1 (C-Space Project), Jinchang Gobi",
+  "country": "China",
+  "lat": 38.55,
+  "lon": 102.0,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "isolation"
+  ],
+  "programs": [
+   "C-Space Mars Base 1"
+  ],
+  "agency": [
+   "CNSA (education/outreach partner)"
+  ],
+  "note": "Gobi Desert Mars simulation base ~20 km from Jinchang, Gansu, opened 2019 for training and outreach; coordinates approximate.",
+  "source": {
+   "label": "Leonard David – China's Mars Base 1 opens",
+   "url": "https://www.leonarddavid.com/video-chinas-mars-base-1-camp-opens/"
+  },
+  "facility": false
+ },
+ {
+  "id": "lonar-crater",
+  "name": "Lonar Crater",
+  "country": "India",
+  "lat": 19.976,
+  "lon": 76.508,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "impact",
+   "volcanic",
+   "astrobiology",
+   "evaporite"
+  ],
+  "programs": [
+   "Indian planetary analog studies (PRL/ISRO-affiliated)"
+  ],
+  "agency": [
+   "ISRO"
+  ],
+  "note": "~1.8 km impact crater in Deccan flood basalt with an alkaline-saline lake, a rare analog for impacts into basaltic crust as on the Moon and Mars.",
+  "source": {
+   "label": "Lonar Lake",
+   "url": "https://en.wikipedia.org/wiki/Lonar_Lake"
+  },
+  "facility": false
+ },
+ {
+  "id": "tso-kar-hope",
+  "name": "Tso Kar Valley – HOPE (Ladakh)",
+  "country": "India",
+  "lat": 33.3,
+  "lon": 78.0,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "isolation",
+   "evaporite",
+   "polar"
+  ],
+  "programs": [
+   "ISRO HOPE (Himalayan Outpost for Planetary Exploration)"
+  ],
+  "agency": [
+   "ISRO"
+  ],
+  "note": "Cold high-altitude (~4,500 m) salt-lake basin with permafrost where ISRO ran its Aug 2025 crewed space analog mission.",
+  "source": {
+   "label": "ISRO – Space Analog Mission in Tso Kar Valley",
+   "url": "https://www.isro.gov.in/Space_Analog_Mission.html"
+  },
+  "facility": false
+ },
+ {
+  "id": "sudbury",
+  "name": "Sudbury impact structure",
+  "country": "Canada",
+  "lat": 46.6,
+  "lon": -81.18,
+  "analog_for": [
+   "moon"
+  ],
+  "themes": [
+   "impact",
+   "isru"
+  ],
+  "programs": [
+   "Apollo 16/17 geology training",
+   "CSA analog deployments"
+  ],
+  "agency": [
+   "NASA",
+   "CSA"
+  ],
+  "note": "~1.85 Ga, ~130–250 km impact structure with impact melt sheet and Ni-Cu ores; trained Apollo crews in shatter cones and breccias.",
+  "source": {
+   "label": "Sudbury Basin",
+   "url": "https://en.wikipedia.org/wiki/Sudbury_Basin"
+  },
+  "facility": false
+ },
+ {
+  "id": "mistastin",
+  "name": "Mistastin Lake crater",
+  "country": "Canada",
+  "lat": 55.88,
+  "lon": -63.31,
+  "analog_for": [
+   "moon"
+  ],
+  "themes": [
+   "impact",
+   "mobility"
+  ],
+  "programs": [
+   "NASA SSERVI FINESSE",
+   "CSA lunar analog campaigns"
+  ],
+  "agency": [
+   "NASA",
+   "CSA"
+  ],
+  "note": "~28 km, ~36 Ma crater in anorthosite, the best terrestrial analog for lunar highland impact melts.",
+  "source": {
+   "label": "Mistastin crater",
+   "url": "https://en.wikipedia.org/wiki/Mistastin_crater"
+  },
+  "facility": false
+ },
+ {
+  "id": "arkaroola",
+  "name": "Arkaroola (Flinders Ranges)",
+  "country": "Australia",
+  "lat": -30.31,
+  "lon": 139.34,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "astrobiology",
+   "mobility"
+  ],
+  "programs": [
+   "Mars Society Australia (Arkaroola Mars Robot Challenge)"
+  ],
+  "agency": [
+   "Mars Society"
+  ],
+  "note": "Arid ranges with hydrothermal springs (Paralana), stromatolites and salt lakes proposed for a Mars analog research facility.",
+  "source": {
+   "label": "Arkaroola",
+   "url": "https://en.wikipedia.org/wiki/Arkaroola"
+  },
+  "facility": false
+ },
+ {
+  "id": "pilbara",
+  "name": "Pilbara – North Pole Dome (Dresser Formation)",
+  "country": "Australia",
+  "lat": -21.15,
+  "lon": 119.42,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "astrobiology",
+   "evaporite",
+   "arid"
+  ],
+  "programs": [
+   "NASA Astrobiology / Mars 2020 science team field training"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "~3.5 Ga stromatolites and hot-spring deposits, among Earth's oldest life evidence; trains rover teams to recognize biosignatures like those sought in Jezero.",
+  "source": {
+   "label": "Dresser Formation",
+   "url": "https://en.wikipedia.org/wiki/Dresser_Formation"
+  },
+  "facility": false
+ },
+ {
+  "id": "dallol",
+  "name": "Dallol (Danakil Depression)",
+  "country": "Ethiopia",
+  "lat": 14.236,
+  "lon": 40.3,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "evaporite",
+   "astrobiology",
+   "volcanic",
+   "arid"
+  ],
+  "programs": [
+   "Europlanet field studies"
+  ],
+  "agency": [
+   "ESA"
+  ],
+  "note": "Hyperacid (pH <0), hypersaline, hot hydrothermal salt field below sea level that tests life limits and Martian sulfate/chloride deposition.",
+  "source": {
+   "label": "Dallol hydrothermal system",
+   "url": "https://en.wikipedia.org/wiki/Dallol_(hydrothermal_system)"
+  },
+  "facility": false
+ },
+ {
+  "id": "death-valley",
+  "name": "Death Valley (Badwater / Ubehebe)",
+  "country": "USA",
+  "lat": 36.23,
+  "lon": -116.767,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "evaporite",
+   "volcanic",
+   "mobility"
+  ],
+  "programs": [
+   "NASA rover & instrument field tests",
+   "Mars 2020/MSL team training"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "Hot arid basin with playas, evaporites, alluvial fans and maar craters (Ubehebe) used for Mars rover testing and evaporite studies.",
+  "source": {
+   "label": "NPS – Death Valley",
+   "url": "https://www.nps.gov/deva/"
+  },
+  "facility": false
+ },
+ {
+  "id": "kilauea",
+  "name": "Kilauea (Kilauea Iki / Ka'u Desert)",
+  "country": "USA",
+  "lat": 19.416,
+  "lon": -155.249,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "volcanic",
+   "lava-tube",
+   "astrobiology",
+   "mobility"
+  ],
+  "programs": [
+   "NASA BASALT",
+   "Apollo geology training"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "Active basaltic shield with fresh flows, fumaroles and lava tubes used for Mars EVA operations (BASALT) and Apollo volcanic training.",
+  "source": {
+   "label": "NPS – Hawai'i Volcanoes",
+   "url": "https://www.nps.gov/havo/"
+  },
+  "facility": false
+ },
+ {
+  "id": "teide",
+  "name": "Teide National Park (Las Cañadas)",
+  "country": "Spain",
+  "lat": 28.22,
+  "lon": -16.62,
+  "analog_for": [
+   "mars",
+   "moon"
+  ],
+  "themes": [
+   "volcanic",
+   "mobility",
+   "arid"
+  ],
+  "programs": [
+   "ESA ExoMars rover & Raman instrument field tests"
+  ],
+  "agency": [
+   "ESA"
+  ],
+  "note": "High-altitude volcanic caldera with basaltic/phonolitic terrains used for ExoMars rover prototype and instrument testing.",
+  "source": {
+   "label": "Teide National Park",
+   "url": "https://en.wikipedia.org/wiki/Teide_National_Park"
+  },
+  "facility": false
+ },
+ {
+  "id": "neemo-aquarius",
+  "name": "Aquarius Reef Base (NEEMO)",
+  "country": "USA",
+  "lat": 24.95,
+  "lon": -80.45,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "isolation",
+   "mobility"
+  ],
+  "programs": [
+   "NASA NEEMO"
+  ],
+  "agency": [
+   "NASA",
+   "ESA",
+   "CSA",
+   "JAXA"
+  ],
+  "note": "Undersea habitat at ~19 m depth off Key Largo for saturation missions simulating EVA, delayed communications and confined living.",
+  "source": {
+   "label": "NASA NEEMO",
+   "url": "https://en.wikipedia.org/wiki/NASA_Extreme_Environment_Mission_Operations"
+  },
+  "facility": true
+ },
+ {
+  "id": "hera-jsc",
+  "name": "HERA (Human Exploration Research Analog), JSC",
+  "country": "USA",
+  "lat": 29.56,
+  "lon": -95.09,
+  "analog_for": [
+   "moon",
+   "mars"
+  ],
+  "themes": [
+   "isolation"
+  ],
+  "programs": [
+   "NASA HRP HERA",
+   "CHAPEA (Mars Dune Alpha)"
+  ],
+  "agency": [
+   "NASA"
+  ],
+  "note": "Ground-based isolation habitats at Johnson Space Center for behavioral-health studies of 45-day (HERA) and 378-day (CHAPEA) missions.",
+  "source": {
+   "label": "Human Exploration Research Analog",
+   "url": "https://en.wikipedia.org/wiki/Human_Exploration_Research_Analog"
+  },
+  "facility": true
+ },
+ {
+  "id": "erfoud-mars2013",
+  "name": "Erfoud / Sahara (OeWF MARS2013)",
+  "country": "Morocco",
+  "lat": 31.45,
+  "lon": -4.15,
+  "analog_for": [
+   "mars"
+  ],
+  "themes": [
+   "arid",
+   "mobility",
+   "isolation"
+  ],
+  "programs": [
+   "OeWF MARS2013"
+  ],
+  "agency": [
+   "OeWF"
+  ],
+  "note": "Feb 2013 OeWF Mars simulation in the northern Sahara near Erfoud with Aouda spacesuit EVAs; coordinates approximate.",
+  "source": {
+   "label": "Austrian Space Forum",
+   "url": "https://en.wikipedia.org/wiki/Austrian_Space_Forum"
+  },
+  "facility": false
+ }
+]

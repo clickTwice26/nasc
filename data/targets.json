@@ -1,0 +1,1203 @@
+[
+ {
+  "id": "moon-connecting-ridge",
+  "body": "moon",
+  "name": "Shackleton–de Gerlache Connecting Ridge",
+  "lat": -89.45,
+  "lon": -137.0,
+  "category": "south-pole",
+  "summary": "The most persistently sunlit terrain near the lunar south pole (~88% of the time at 2 m height in LOLA models) and adjacent to Shackleton/de Gerlache PSR cold traps; a 2022 Artemis III candidate region and the archetype polar base site for power + ice access.",
+  "missions": [
+   "Artemis III (2022 candidate region, dropped in Oct 2024 refinement)"
+  ],
+  "env": {
+   "t_surface_mean_C": -120,
+   "t_surface_min_C": -183,
+   "t_surface_max_C": -40,
+   "diurnal_range_C": 100,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere (surface-bounded exosphere). Water ice cold-trapped in adjacent PSRs (Shackleton floor, de Gerlache) below ~110 K.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Unfiltered solar UV including UVC; Sun is only ~1.5-2 deg above the horizon so irradiance on horizontal surfaces is tiny, but vertical/sun-facing surfaces receive full 1 AU flux. DNA-weighted factor vs Earth surface is for normal incidence.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.15,
+   "sun_elevation_max_deg": 2.0,
+   "illumination_fraction": 0.88,
+   "earth_visibility_fraction": 0.5,
+   "slope_deg_typical": 8,
+   "terrain": "Narrow highland ridge (Shackleton rim to de Gerlache rim), slopes 5-15 deg, flanked by permanently shadowed crater floors.",
+   "geology": [
+    "impact",
+    "anorthosite",
+    "permanently-shadowed-ice"
+   ],
+   "ice": "psr-nearby",
+   "dust": "Fine, electrostatically charged, abrasive highland regolith; no wind.",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "LPI 2020: Shackleton–de Gerlache ridge 88% illumination at 2 m (Mazarico et al. 2011 data)",
+    "url": "https://www.hou.usra.edu/meetings/lunarsurface2020/pdf/5082.pdf"
+   },
+   {
+    "label": "JGR Planets 2025: Artemis CLR landing-site coordinates (CR sites ~-89.5, -137)",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JE009434"
+   },
+   {
+    "label": "Chang'e-4 LND lunar surface dose 1369 uSv/day",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7518862/"
+   },
+   {
+    "label": "Paige et al. 2010 Diviner cold traps",
+    "url": "https://doi.org/10.1126/science.1187726"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-de-gerlache-rim-2",
+  "body": "moon",
+  "name": "de Gerlache Rim 2 (Artemis III candidate)",
+  "lat": -88.12,
+  "lon": -69.0,
+  "category": "south-pole",
+  "summary": "Rim of de Gerlache crater near the Shackleton–de Gerlache ridge; high-elevation, well-lit terrain next to the large de Gerlache PSR. One of NASA's nine refined Artemis III regions (Oct 2024).",
+  "missions": [
+   "Artemis III"
+  ],
+  "env": {
+   "t_surface_mean_C": -115,
+   "t_surface_min_C": -183,
+   "t_surface_max_C": -30,
+   "diurnal_range_C": 110,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere; de Gerlache crater floor is a PSR cold trap (<110 K) adjacent to the rim.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Unfiltered solar UV at grazing incidence (sun <= ~3.4 deg).",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.15,
+   "sun_elevation_max_deg": 3.4,
+   "illumination_fraction": 0.75,
+   "earth_visibility_fraction": 0.55,
+   "slope_deg_typical": 7,
+   "terrain": "Crater rim highlands with 5-15 deg slopes; ~30 km2 meets HLS landing constraints (~7.5% of region).",
+   "geology": [
+    "impact",
+    "anorthosite",
+    "permanently-shadowed-ice"
+   ],
+   "ice": "psr-nearby",
+   "dust": "Fine, charged, abrasive highland regolith.",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "NASA Oct 2024: refined Artemis III landing regions",
+    "url": "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
+   },
+   {
+    "label": "JGR Planets 2025: candidate landing sites in Artemis CLRs (dGR2 sites -88.0 to -88.4, -62 to -75)",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JE009434"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-malapert-massif",
+  "body": "moon",
+  "name": "Malapert Massif (Mons Malapert)",
+  "lat": -86.04,
+  "lon": 0.15,
+  "category": "south-pole",
+  "summary": "A ~5 km-high massif on the nearside limb with exceptional, near-continuous Earth visibility (direct-to-Earth comms) plus good illumination; Artemis III candidate.",
+  "missions": [
+   "Artemis III"
+  ],
+  "env": {
+   "t_surface_mean_C": -105,
+   "t_surface_min_C": -183,
+   "t_surface_max_C": -20,
+   "diurnal_range_C": 130,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere; small PSRs on massif flanks and Haworth/Shoemaker cold traps nearby.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Unfiltered solar UV; sun max ~5.5 deg elevation.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.15,
+   "sun_elevation_max_deg": 5.5,
+   "illumination_fraction": 0.7,
+   "earth_visibility_fraction": 0.95,
+   "slope_deg_typical": 10,
+   "terrain": "Steep massif; only ~7 km2 (1.6%) meets HLS landing constraints. Summit/rim plateaus are the landing targets.",
+   "geology": [
+    "impact",
+    "anorthosite",
+    "permanently-shadowed-ice"
+   ],
+   "ice": "psr-nearby",
+   "dust": "Fine, charged highland regolith; massif ejecta/basin material (South Pole–Aitken related).",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "NASA Oct 2024: refined Artemis III landing regions",
+    "url": "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
+   },
+   {
+    "label": "NASA Science: Malapert region high illumination & exceptional Earth visibility",
+    "url": "https://science.nasa.gov/image-detail/20100618/"
+   },
+   {
+    "label": "JGR Planets 2025: MMA landing site coordinates",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JE009434"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-mons-mouton",
+  "body": "moon",
+  "name": "Mons Mouton (Leibnitz Beta)",
+  "lat": -85.38,
+  "lon": 30.72,
+  "category": "south-pole",
+  "summary": "Large flat-topped massif (formerly Leibnitz Beta) with extensive illuminated plateau and nearby PSRs; Artemis III candidate and VIPER's former target area.",
+  "missions": [
+   "Artemis III",
+   "VIPER (former target region)",
+   "Intuitive Machines IM-2 Athena (landed on plateau near Mons Mouton, Mar 2025)"
+  ],
+  "env": {
+   "t_surface_mean_C": -100,
+   "t_surface_min_C": -183,
+   "t_surface_max_C": -15,
+   "diurnal_range_C": 130,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere; accessible PSRs <110 K identified at some MMO candidate sites.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Unfiltered solar UV; sun max ~6 deg elevation.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.15,
+   "sun_elevation_max_deg": 6.1,
+   "illumination_fraction": 0.7,
+   "earth_visibility_fraction": 0.85,
+   "slope_deg_typical": 6,
+   "terrain": "Massif summit and flanks; ~21 km2 (8%) meets HLS constraints.",
+   "geology": [
+    "impact",
+    "anorthosite",
+    "permanently-shadowed-ice"
+   ],
+   "ice": "psr-nearby",
+   "dust": "Fine, charged highland regolith.",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "NASA Oct 2024: refined Artemis III landing regions",
+    "url": "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
+   },
+   {
+    "label": "NASA SVS: Mons Mouton",
+    "url": "https://svs.gsfc.nasa.gov/5074/"
+   },
+   {
+    "label": "JGR Planets 2025: MMO landing site coordinates & PSR access",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JE009434"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-mons-mouton-plateau",
+  "body": "moon",
+  "name": "Mons Mouton Plateau",
+  "lat": -84.51,
+  "lon": 30.51,
+  "category": "south-pole",
+  "summary": "By far the largest Artemis III candidate region, a relatively flat plateau with ~565 km2 meeting landing constraints and several accessible cold PSRs.",
+  "missions": [
+   "Artemis III"
+  ],
+  "env": {
+   "t_surface_mean_C": -95,
+   "t_surface_min_C": -183,
+   "t_surface_max_C": -10,
+   "diurnal_range_C": 140,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere; accessible PSRs <110 K at several candidate sites.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Unfiltered solar UV; sun max ~7 deg elevation.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.15,
+   "sun_elevation_max_deg": 7.0,
+   "illumination_fraction": 0.65,
+   "earth_visibility_fraction": 0.85,
+   "slope_deg_typical": 4,
+   "terrain": "Broad plateau, gentle slopes (<8 deg over large areas).",
+   "geology": [
+    "impact",
+    "anorthosite",
+    "permanently-shadowed-ice"
+   ],
+   "ice": "psr-nearby",
+   "dust": "Fine, charged highland regolith.",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "NASA Oct 2024: refined Artemis III landing regions",
+    "url": "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
+   },
+   {
+    "label": "JGR Planets 2025: MMP largest suitable landing area (564.8 km2)",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JE009434"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-nobile-rim",
+  "body": "moon",
+  "name": "Nobile Rim 1 & 2",
+  "lat": -84.5,
+  "lon": 47.8,
+  "category": "south-pole",
+  "summary": "Rim of Nobile crater (a large PSR cold trap). Merges Nobile Rim 1 (~-85.2, 37.2) and Nobile Rim 2 (~-83.9, 58.3), both Artemis III candidates; NR2 has one of the highest fractions of landable terrain.",
+  "missions": [
+   "Artemis III"
+  ],
+  "env": {
+   "t_surface_mean_C": -95,
+   "t_surface_min_C": -183,
+   "t_surface_max_C": -10,
+   "diurnal_range_C": 140,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere; Nobile crater interior is a major PSR; NR2 site 204 has an accessible PSR <110 K.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Unfiltered solar UV; sun max ~7 deg elevation.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.15,
+   "sun_elevation_max_deg": 7.0,
+   "illumination_fraction": 0.6,
+   "earth_visibility_fraction": 0.75,
+   "slope_deg_typical": 6,
+   "terrain": "Crater rim highlands; NR2 ~57 km2 (14%) landable.",
+   "geology": [
+    "impact",
+    "anorthosite",
+    "permanently-shadowed-ice"
+   ],
+   "ice": "psr-nearby",
+   "dust": "Fine, charged highland regolith.",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "NASA Oct 2024: refined Artemis III landing regions",
+    "url": "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
+   },
+   {
+    "label": "JGR Planets 2025: NR1/NR2 site coordinates",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JE009434"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-haworth",
+  "body": "moon",
+  "name": "Haworth",
+  "lat": -86.77,
+  "lon": -22.8,
+  "category": "south-pole",
+  "summary": "Highlands between the rims of Haworth and Cabeus craters, both large PSRs (Cabeus was the LCROSS impact site with confirmed water); Artemis III candidate with large landable area.",
+  "missions": [
+   "Artemis III"
+  ],
+  "env": {
+   "t_surface_mean_C": -110,
+   "t_surface_min_C": -183,
+   "t_surface_max_C": -25,
+   "diurnal_range_C": 130,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere; adjacent Haworth PSR and nearby Cabeus (LCROSS detected ~5.6 wt% water in ejecta).",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Unfiltered solar UV; sun max ~4.8 deg elevation.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.15,
+   "sun_elevation_max_deg": 4.8,
+   "illumination_fraction": 0.6,
+   "earth_visibility_fraction": 0.75,
+   "slope_deg_typical": 6,
+   "terrain": "Inter-crater highlands, ~77 km2 landable (8.7%).",
+   "geology": [
+    "impact",
+    "anorthosite",
+    "permanently-shadowed-ice"
+   ],
+   "ice": "psr-nearby",
+   "dust": "Fine, charged highland regolith.",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "NASA Oct 2024: refined Artemis III landing regions",
+    "url": "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
+   },
+   {
+    "label": "JGR Planets 2025: Haworth site coordinates",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JE009434"
+   },
+   {
+    "label": "Colaprete et al. 2010 LCROSS water at Cabeus",
+    "url": "https://doi.org/10.1126/science.1186986"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-peak-near-cabeus-b",
+  "body": "moon",
+  "name": "Peak Near Cabeus B",
+  "lat": -83.57,
+  "lon": -69.1,
+  "category": "south-pole",
+  "summary": "Isolated peak near Cabeus B crater, added in the Oct 2024 refinement; small landable area but close to the water-bearing Cabeus cold trap.",
+  "missions": [
+   "Artemis III"
+  ],
+  "env": {
+   "t_surface_mean_C": -95,
+   "t_surface_min_C": -183,
+   "t_surface_max_C": -5,
+   "diurnal_range_C": 150,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere; Cabeus PSR (LCROSS water) nearby.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Unfiltered solar UV; sun max ~8 deg elevation.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.15,
+   "sun_elevation_max_deg": 8.0,
+   "illumination_fraction": 0.6,
+   "earth_visibility_fraction": 0.8,
+   "slope_deg_typical": 9,
+   "terrain": "Peak with steep flanks; only ~2 km2 (0.5%) landable.",
+   "geology": [
+    "impact",
+    "anorthosite",
+    "permanently-shadowed-ice"
+   ],
+   "ice": "psr-nearby",
+   "dust": "Fine, charged highland regolith.",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "NASA Oct 2024: refined Artemis III landing regions",
+    "url": "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
+   },
+   {
+    "label": "JGR Planets 2025: PCB site coordinates",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JE009434"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-slater-plain",
+  "body": "moon",
+  "name": "Slater Plain",
+  "lat": -87.2,
+  "lon": 126.7,
+  "category": "south-pole",
+  "summary": "Smooth plain on the farside-facing side of the pole, added in Oct 2024; highest fraction of landable terrain of all regions and multiple accessible cold PSRs, but poorer Earth visibility.",
+  "missions": [
+   "Artemis III"
+  ],
+  "env": {
+   "t_surface_mean_C": -115,
+   "t_surface_min_C": -183,
+   "t_surface_max_C": -35,
+   "diurnal_range_C": 120,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere; accessible PSRs <110 K at sites SP01/02/10/11.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Unfiltered solar UV; sun max ~4.3 deg elevation.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.15,
+   "sun_elevation_max_deg": 4.3,
+   "illumination_fraction": 0.55,
+   "earth_visibility_fraction": 0.35,
+   "slope_deg_typical": 4,
+   "terrain": "Plain; ~77 km2 landable (19.3%, highest fraction).",
+   "geology": [
+    "impact",
+    "anorthosite",
+    "permanently-shadowed-ice"
+   ],
+   "ice": "psr-nearby",
+   "dust": "Fine, charged highland regolith.",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "NASA Oct 2024: refined Artemis III landing regions",
+    "url": "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
+   },
+   {
+    "label": "JGR Planets 2025: Slater Plain site coordinates & PSRs",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JE009434"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-shiv-shakti",
+  "body": "moon",
+  "name": "Shiv Shakti Point (Chandrayaan-3)",
+  "lat": -69.373,
+  "lon": 32.319,
+  "category": "south-pole",
+  "summary": "Chandrayaan-3 Vikram landing site (23 Aug 2023), first in-situ high-latitude regolith temperature profile (ChaSTE): 355 K peak on a 6 deg sun-facing slope vs ~330 K expected, showing metre-scale topography controls polar temperatures and that poleward slopes >14 deg could hold near-surface ice.",
+  "missions": [
+   "Chandrayaan-3 (Vikram/Pragyan)"
+  ],
+  "env": {
+   "t_surface_mean_C": -60,
+   "t_surface_min_C": -168,
+   "t_surface_max_C": 82,
+   "diurnal_range_C": 250,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere. ChaSTE: top ~10 cm shows ~55-85 K gradient during day; modelled night-time surface converges to ~105 K. Ice possible only on poleward slopes >14 deg (top 20 cm) per model.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Unfiltered solar UV; sun reaches ~22 deg elevation.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.12,
+   "sun_elevation_max_deg": 22.1,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": 1.0,
+   "slope_deg_typical": 6,
+   "terrain": "Highland plains near Manzinus/Boguslawsky; lander on ~6 deg sunward local slope. APXS shows ferroan-anorthosite-like composition.",
+   "geology": [
+    "impact",
+    "anorthosite"
+   ],
+   "ice": "none",
+   "dust": "Fine regolith; low thermal conductivity measured by ChaSTE.",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "Durga Prasad et al. 2025 Commun. Earth Environ.: ChaSTE 355 K peak, ~105 K night",
+    "url": "https://www.nature.com/articles/s43247-025-02114-6"
+   },
+   {
+    "label": "ISRO: ChaSTE in-situ measurement press release",
+    "url": "https://www.isro.gov.in/India_Bags_Credit_First-Ever_In-Situ_Measurement.html"
+   },
+   {
+    "label": "Landing coordinates 69.373S 32.319E",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11880395/"
+   },
+   {
+    "label": "Vadawale et al. 2024 Nature APXS",
+    "url": "https://doi.org/10.1038/s41586-024-07870-7"
+   }
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "moon-tranquillitatis-pit",
+  "body": "moon",
+  "name": "Mare Tranquillitatis Pit (lava-tube skylight)",
+  "lat": 8.3355,
+  "lon": 33.222,
+  "category": "lava-tube",
+  "summary": "~100 m-wide, ~100 m-deep collapse pit with an overhang; Mini-RF radar (Carrer et al. 2024) indicates an accessible subsurface cave conduit. Shaded areas under the overhang sit near a stable ~17 C, offering natural thermal, radiation and micrometeorite shielding for a habitat.",
+  "missions": [
+   "LRO (LROC, Diviner, Mini-RF)"
+  ],
+  "env": {
+   "t_surface_mean_C": 17,
+   "t_surface_min_C": -43,
+   "t_surface_max_C": 142,
+   "diurnal_range_C": 185,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere. Mean value is the near-isothermal ~290 K under the overhang/cave (varies <1 C); min/max are the open pit floor (~230 K night, ~415 K noon modelled). Surrounding mare surface: ~127 C day, ~-173 C night.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Open surface: full unfiltered solar UV; overhang/cave interior: no direct UV.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.07,
+   "sun_elevation_max_deg": 83.2,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": 1.0,
+   "slope_deg_typical": 2,
+   "terrain": "Flat mare plains around a ~100 m vertical-walled pit with ~20+ m overhang; floor boulder-strewn.",
+   "geology": [
+    "volcanic-basalt",
+    "lava-tube"
+   ],
+   "ice": "none",
+   "dust": "Mare regolith; cave interior expected to be sheltered from micrometeorite gardening.",
+   "radiation_mSv_per_day": 0.2
+  },
+  "sources": [
+   {
+    "label": "NASA 2022: LRO finds lunar pits ~17 C",
+    "url": "https://www.nasa.gov/solar-system/nasas-lro-finds-lunar-pits-harbor-comfortable-temperatures/"
+   },
+   {
+    "label": "Horvath et al. 2022 GRL: pit/cave thermal environment (290 K, floor ~415 K)",
+    "url": "https://ui.adsabs.harvard.edu/abs/2022GeoRL..4999710H"
+   },
+   {
+    "label": "Carrer et al. 2024 Nature Astronomy: radar evidence of cave conduit",
+    "url": "https://doi.org/10.1038/s41550-024-02302-y"
+   },
+   {
+    "label": "Pit coordinates",
+    "url": "https://en.wikipedia.org/wiki/Mare_Tranquillitatis_pit"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-marius-hills-pit",
+  "body": "moon",
+  "name": "Marius Hills Pit",
+  "lat": 14.091,
+  "lon": -56.777,
+  "category": "lava-tube",
+  "summary": "~65 x 90 m, ~34 m-deep skylight in the Marius Hills volcanic complex (Oceanus Procellarum), aligned with a sinuous rille; prime candidate lava-tube entrance (GRAIL gravity also suggests large voids).",
+  "missions": [
+   "SELENE/Kaguya (discovery)",
+   "LRO"
+  ],
+  "env": {
+   "t_surface_mean_C": 17,
+   "t_surface_min_C": -43,
+   "t_surface_max_C": 140,
+   "diurnal_range_C": 183,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere. Mean = modelled cave/overhang temperature (~290 K); min/max = modelled open pit floor; surrounding surface ~127 C / -173 C.",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Open surface: full unfiltered solar UV; interior shielded.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.08,
+   "sun_elevation_max_deg": 77.4,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": 1.0,
+   "slope_deg_typical": 4,
+   "terrain": "Volcanic domes and cones on mare plains; pit along a rille.",
+   "geology": [
+    "volcanic-basalt",
+    "lava-tube"
+   ],
+   "ice": "none",
+   "dust": "Mare regolith.",
+   "radiation_mSv_per_day": 0.3
+  },
+  "sources": [
+   {
+    "label": "NASA 2022: LRO finds lunar pits ~17 C (Marius Hills pit dims)",
+    "url": "https://www.nasa.gov/solar-system/nasas-lro-finds-lunar-pits-harbor-comfortable-temperatures/"
+   },
+   {
+    "label": "Wagner & Robinson 2022 JGR: Lunar pit morphology",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2022JE007328"
+   },
+   {
+    "label": "Haruyama et al. 2009 GRL: Marius Hills hole discovery",
+    "url": "https://doi.org/10.1029/2009GL040635"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moon-hadley-rille",
+  "body": "moon",
+  "name": "Hadley–Apennine (Apollo 15, Hadley Rille)",
+  "lat": 26.1322,
+  "lon": 3.6339,
+  "category": "mare",
+  "summary": "Apollo 15 landing site: mare basalt plain at the foot of the Apennine Mountains beside Hadley Rille (a collapsed lava channel/tube). Equatorial reference with measured heat-flow surface temperatures.",
+  "missions": [
+   "Apollo 15"
+  ],
+  "env": {
+   "t_surface_mean_C": -60,
+   "t_surface_min_C": -181,
+   "t_surface_max_C": 101,
+   "diurnal_range_C": 282,
+   "pressure_kPa": 3e-13,
+   "water_vapor_note": "No atmosphere; no ice (equatorial, ~14-day lunar day).",
+   "atm_water_ppm_or_precip_um": null,
+   "uv_note": "Full unfiltered solar UV including UVC.",
+   "uv_relative_to_earth": 1000,
+   "albedo": 0.08,
+   "sun_elevation_max_deg": 65.4,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": 1.0,
+   "slope_deg_typical": 3,
+   "terrain": "Mare basalt plain; Hadley Rille ~1.5 km wide, ~300 m deep; Apennine massifs rise ~4-5 km.",
+   "geology": [
+    "volcanic-basalt",
+    "impact",
+    "lava-tube"
+   ],
+   "ice": "none",
+   "dust": "Mare regolith (Apollo 15 crews reported pervasive dust adhesion).",
+   "radiation_mSv_per_day": 1.37
+  },
+  "sources": [
+   {
+    "label": "NASA Apollo 15 mission",
+    "url": "https://www.nasa.gov/mission/apollo-15/"
+   },
+   {
+    "label": "Langseth & Keihm / Apollo 15 Heat Flow Experiment surface temperatures (via ChaSTE refs)",
+    "url": "https://www.nature.com/articles/s43247-025-02114-6"
+   },
+   {
+    "label": "Williams et al. 2017 Diviner global surface temperatures",
+    "url": "https://doi.org/10.1016/j.icarus.2016.08.012"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "mars-jezero",
+  "body": "mars",
+  "name": "Jezero Crater (Perseverance)",
+  "lat": 18.4447,
+  "lon": 77.4508,
+  "category": "crater-lake",
+  "summary": "Ancient crater lake with a preserved delta; Perseverance is caching samples for Mars Sample Return. MEDA provides full weather record.",
+  "missions": [
+   "Mars 2020 Perseverance",
+   "Ingenuity"
+  ],
+  "env": {
+   "t_surface_mean_C": -50,
+   "t_surface_min_C": -95,
+   "t_surface_max_C": 20,
+   "diurnal_range_C": 80,
+   "pressure_kPa": 0.7,
+   "water_vapor_note": "MEDA RH up to ~29% at night; column ~5-15 pr-um seasonally.",
+   "atm_water_ppm_or_precip_um": 10,
+   "uv_note": "No ozone shield: UVC (200-280 nm) reaches the surface; DNA-weighted dose up to ~3 orders of magnitude above Earth's (Cockell et al. 2000). MEDA RDS measures UV.",
+   "uv_relative_to_earth": 700,
+   "albedo": 0.16,
+   "sun_elevation_max_deg": 90,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": null,
+   "slope_deg_typical": 3,
+   "terrain": "Crater floor, delta fan, rocky plains; thermal inertia 180-605 SI (MEDA).",
+   "geology": [
+    "impact",
+    "sedimentary",
+    "volcanic-basalt",
+    "hydrated-minerals",
+    "aeolian-dust"
+   ],
+   "ice": "none",
+   "dust": "Dust optical depth 0.3-0.6 in clear season; frequent dust devils.",
+   "radiation_mSv_per_day": 0.65
+  },
+  "sources": [
+   {
+    "label": "Rodriguez-Manfredi et al. 2023 Nat. Geosci.: MEDA first 250 sols (650-761 Pa)",
+    "url": "https://www.nature.com/articles/s41561-022-01084-0"
+   },
+   {
+    "label": "JPL: First weather report from Jezero",
+    "url": "https://www.jpl.nasa.gov/news/nasas-first-weather-report-from-jezero-crater-on-mars/"
+   },
+   {
+    "label": "One Martian year of near-surface temperatures at Jezero (JGR 2024)",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2024JE008385"
+   },
+   {
+    "label": "Cockell et al. 2000 Icarus: Martian UV environment",
+    "url": "https://doi.org/10.1006/icar.2000.6396"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "mars-gale",
+  "body": "mars",
+  "name": "Gale Crater (Curiosity)",
+  "lat": -4.5895,
+  "lon": 137.4417,
+  "category": "sedimentary",
+  "summary": "Layered sedimentary record (Mount Sharp) of a long-lived lake system; REMS and RAD provide the reference Mars surface weather and radiation dataset.",
+  "missions": [
+   "MSL Curiosity"
+  ],
+  "env": {
+   "t_surface_mean_C": -50,
+   "t_surface_min_C": -95,
+   "t_surface_max_C": 20,
+   "diurnal_range_C": 85,
+   "pressure_kPa": 0.83,
+   "water_vapor_note": "Very dry; REMS RH near 0 by day, up to ~70% at night in winter; column ~5-10 pr-um.",
+   "atm_water_ppm_or_precip_um": 7,
+   "uv_note": "REMS UV sensor: strong UVC/UVB at surface modulated by dust; DNA-weighted far above Earth.",
+   "uv_relative_to_earth": 700,
+   "albedo": 0.2,
+   "sun_elevation_max_deg": 90,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": null,
+   "slope_deg_typical": 5,
+   "terrain": "Crater floor plains (Aeolis Palus) rising onto Mount Sharp; dunes (Bagnold).",
+   "geology": [
+    "impact",
+    "sedimentary",
+    "hydrated-minerals",
+    "aeolian-dust",
+    "evaporite"
+   ],
+   "ice": "none",
+   "dust": "Moderate dust; seasonal opacity ~0.3-1.5; global dust storm 2018.",
+   "radiation_mSv_per_day": 0.64
+  },
+  "sources": [
+   {
+    "label": "Hassler et al. 2014 Science: RAD 0.64 mSv/day",
+    "url": "https://doi.org/10.1126/science.1244797"
+   },
+   {
+    "label": "JPL PIA16913: Gale temperatures (air highs ~0 C, lows ~-70 C)",
+    "url": "https://www.jpl.nasa.gov/images/pia16913-steady-temperatures-at-mars-gale-crater/"
+   },
+   {
+    "label": "REMS weather reports (CAB)",
+    "url": "http://cab.inta-csic.es/rems/en/weather-report-mars-year-33-month-10/"
+   },
+   {
+    "label": "Vasavada et al. 2017 Icarus: REMS ground temperatures",
+    "url": "https://ui.adsabs.harvard.edu/abs/2017Icar..284..372V/abstract"
+   }
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "mars-arcadia-planitia",
+  "body": "mars",
+  "name": "Arcadia Planitia (mid-latitude ground ice)",
+  "lat": 40.0,
+  "lon": -165.0,
+  "category": "ground-ice",
+  "summary": "Low-elevation northern plain with widespread shallow (<1 m) and decametre-thick excess water ice mapped by SWIM; the leading candidate region for a human landing that relies on ice ISRU.",
+  "missions": [
+   "SWIM (MRO/SHARAD, Mars Odyssey, MGS data)",
+   "proposed I-MIM / human landing candidate"
+  ],
+  "env": {
+   "t_surface_mean_C": -65,
+   "t_surface_min_C": -125,
+   "t_surface_max_C": -5,
+   "diurnal_range_C": 70,
+   "pressure_kPa": 0.8,
+   "water_vapor_note": "Column ~10-30 pr-um (northern summer maximum); seasonal water/CO2 frost possible in winter.",
+   "atm_water_ppm_or_precip_um": 15,
+   "uv_note": "Unshielded UVC; somewhat lower than equator due to latitude.",
+   "uv_relative_to_earth": 500,
+   "albedo": 0.2,
+   "sun_elevation_max_deg": 75.2,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": null,
+   "slope_deg_typical": 1,
+   "terrain": "Very flat plains, polygonal/patterned ground, terraced and expanded craters, ice-exposing scarps nearby.",
+   "geology": [
+    "ground-ice",
+    "volcanic-basalt",
+    "aeolian-dust",
+    "impact"
+   ],
+   "ice": "shallow-ground-ice",
+   "dust": "Moderate dust cover.",
+   "radiation_mSv_per_day": 0.62
+  },
+  "sources": [
+   {
+    "label": "SWIM project (PSI/NASA)",
+    "url": "https://swim.psi.edu/"
+   },
+   {
+    "label": "Bramson et al. 2015 GRL: widespread excess ice in Arcadia",
+    "url": "https://doi.org/10.1002/2015GL064844"
+   },
+   {
+    "label": "Morgan et al. 2021 Nature Astronomy: subsurface ice in northern mid-latitudes",
+    "url": "https://ntrs.nasa.gov/api/citations/20205008958/downloads/Morgan_etal_NA_Perspective_NATASTRON_19122833C%20.pdf"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "mars-utopia-zhurong",
+  "body": "mars",
+  "name": "Utopia Planitia (Zhurong)",
+  "lat": 25.066,
+  "lon": 109.925,
+  "category": "sedimentary",
+  "summary": "Southern Utopia Planitia landing site of CNSA's Zhurong rover; possible ancient ocean-shoreline and buried water-related layers (RoPeR radar); hydrated duricrust observed.",
+  "missions": [
+   "Tianwen-1 Zhurong",
+   "Viking 2 (northern Utopia, 48N)"
+  ],
+  "env": {
+   "t_surface_mean_C": -55,
+   "t_surface_min_C": -100,
+   "t_surface_max_C": 5,
+   "diurnal_range_C": 60,
+   "pressure_kPa": 0.76,
+   "water_vapor_note": "Column ~10-20 pr-um; Zhurong MCS measured pressure 677.7-848.3 Pa and ~60 K day-night air temperature swing (average air ~218-268 K).",
+   "atm_water_ppm_or_precip_um": 15,
+   "uv_note": "Unshielded UVC.",
+   "uv_relative_to_earth": 600,
+   "albedo": 0.22,
+   "sun_elevation_max_deg": 90,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": null,
+   "slope_deg_typical": 2,
+   "terrain": "Flat plains with troughs, cones, transverse aeolian ridges.",
+   "geology": [
+    "sedimentary",
+    "volcanic-basalt",
+    "aeolian-dust",
+    "hydrated-minerals",
+    "ground-ice"
+   ],
+   "ice": "none",
+   "dust": "Moderate dust; dust accumulation ended Zhurong's operations (2022).",
+   "radiation_mSv_per_day": 0.62
+  },
+  "sources": [
+   {
+    "label": "Jiang et al. 2023 Sci. Rep.: Zhurong MCS first 325 sols",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9971204/"
+   },
+   {
+    "label": "Frontiers 2022: Zhurong landing site temperature field",
+    "url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.1059242/full"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "mars-deuteronilus-mensae",
+  "body": "mars",
+  "name": "Deuteronilus Mensae (debris-covered glaciers)",
+  "lat": 43.9,
+  "lon": 22.5,
+  "category": "ground-ice",
+  "summary": "Fretted terrain with lobate debris aprons and lineated valley fill confirmed by SHARAD as nearly pure glacial ice under a thin debris cover; proposed in NASA's 2015 Human Landing Site / Exploration Zone workshop.",
+  "missions": [
+   "MRO SHARAD",
+   "NASA Human Landing Sites EZ workshop (2015)"
+  ],
+  "env": {
+   "t_surface_mean_C": -70,
+   "t_surface_min_C": -125,
+   "t_surface_max_C": -5,
+   "diurnal_range_C": 65,
+   "pressure_kPa": 0.75,
+   "water_vapor_note": "Column ~10-30 pr-um seasonally; winter CO2/H2O frost.",
+   "atm_water_ppm_or_precip_um": 15,
+   "uv_note": "Unshielded UVC; lower annual dose at 44N.",
+   "uv_relative_to_earth": 450,
+   "albedo": 0.2,
+   "sun_elevation_max_deg": 71.3,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": null,
+   "slope_deg_typical": 5,
+   "terrain": "Mesas and buttes on the dichotomy boundary with debris aprons/glaciers several hundred m thick.",
+   "geology": [
+    "glacial",
+    "ground-ice",
+    "sedimentary",
+    "aeolian-dust"
+   ],
+   "ice": "glacier",
+   "dust": "Debris/dust mantle over ice, typically <1-10 m.",
+   "radiation_mSv_per_day": 0.62
+  },
+  "sources": [
+   {
+    "label": "Plaut et al. 2009 GRL: radar evidence for ice in lobate debris aprons",
+    "url": "https://doi.org/10.1029/2008GL036379"
+   },
+   {
+    "label": "Petersen et al. 2018 GRL: high ice purity of lobate debris aprons, Deuteronilus/Protonilus Mensae",
+    "url": "https://ui.adsabs.harvard.edu/abs/2018GeoRL..4511595P"
+   },
+   {
+    "label": "NASA First Landing Site/Exploration Zone Workshop 2015",
+    "url": "https://www.hou.usra.edu/meetings/explorationzone2015/"
+   }
+  ],
+  "confidence": "low"
+ },
+ {
+  "id": "mars-meridiani-planum",
+  "body": "mars",
+  "name": "Meridiani Planum (Opportunity)",
+  "lat": -1.9462,
+  "lon": -5.5266,
+  "category": "sedimentary",
+  "summary": "Opportunity's site: hematite concretions ('blueberries') and jarosite-bearing sulfate sandstones recording acidic groundwater/evaporitic playas; equatorial, flat, safe for landing.",
+  "missions": [
+   "MER-B Opportunity"
+  ],
+  "env": {
+   "t_surface_mean_C": -45,
+   "t_surface_min_C": -95,
+   "t_surface_max_C": 25,
+   "diurnal_range_C": 90,
+   "pressure_kPa": 0.62,
+   "water_vapor_note": "Column ~5-15 pr-um; no in-situ pressure sensor (value from Mars Climate Database for ~-1.4 km elevation).",
+   "atm_water_ppm_or_precip_um": 10,
+   "uv_note": "Unshielded UVC at equator.",
+   "uv_relative_to_earth": 700,
+   "albedo": 0.13,
+   "sun_elevation_max_deg": 90,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": null,
+   "slope_deg_typical": 1,
+   "terrain": "Flat plains with basaltic sand ripples, small craters (Eagle, Endurance, Victoria) and Endeavour crater rim.",
+   "geology": [
+    "sedimentary",
+    "evaporite",
+    "hydrated-minerals",
+    "aeolian-dust",
+    "impact"
+   ],
+   "ice": "none",
+   "dust": "Dark low-dust surface; 2018 global dust storm ended the mission.",
+   "radiation_mSv_per_day": 0.67
+  },
+  "sources": [
+   {
+    "label": "NASA MER Opportunity mission",
+    "url": "https://science.nasa.gov/mission/mer-opportunity/"
+   },
+   {
+    "label": "Squyres et al. 2004 Science: in situ evidence for acidic, aqueous environment",
+    "url": "https://doi.org/10.1126/science.1104559"
+   },
+   {
+    "label": "Mars Climate Database (LMD)",
+    "url": "http://www-mars.lmd.jussieu.fr/"
+   }
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "mars-hellas-floor",
+  "body": "mars",
+  "name": "Hellas Planitia floor",
+  "lat": -42.4,
+  "lon": 70.5,
+  "category": "crater-lake",
+  "summary": "Floor of the ~2,300 km Hellas impact basin, ~7 km below datum: the highest surface pressure on Mars (~1.1-1.2 kPa, well above water's triple point), giving the most radiation shielding and best EDL drag, but frequent dust storms and seasonal CO2 frost.",
+  "missions": [
+   "Orbital only (MRO, MEX, TGO)"
+  ],
+  "env": {
+   "t_surface_mean_C": -60,
+   "t_surface_min_C": -125,
+   "t_surface_max_C": 5,
+   "diurnal_range_C": 60,
+   "pressure_kPa": 1.16,
+   "water_vapor_note": "Column ~10-20 pr-um; pressure above triple point allows transient liquid/brine stability in models; seasonal frost in southern winter.",
+   "atm_water_ppm_or_precip_um": 15,
+   "uv_note": "Thicker column (~1.7x Gale) and dust reduce surface UVC somewhat.",
+   "uv_relative_to_earth": 400,
+   "albedo": 0.24,
+   "sun_elevation_max_deg": 72.8,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": null,
+   "slope_deg_typical": 2,
+   "terrain": "Smooth to honeycomb-textured basin floor plains; dust-storm source region.",
+   "geology": [
+    "impact",
+    "sedimentary",
+    "aeolian-dust",
+    "ground-ice"
+   ],
+   "ice": "none",
+   "dust": "High; major source of regional/global dust storms.",
+   "radiation_mSv_per_day": 0.5
+  },
+  "sources": [
+   {
+    "label": "Mars Climate Database (LMD) surface pressure",
+    "url": "http://www-mars.lmd.jussieu.fr/"
+   },
+   {
+    "label": "Hassler et al. 2014 RAD baseline (scaled by column mass)",
+    "url": "https://doi.org/10.1126/science.1244797"
+   }
+  ],
+  "confidence": "low"
+ },
+ {
+  "id": "mars-tharsis-arsia-plains",
+  "body": "mars",
+  "name": "Tharsis lava plains (Arsia Mons flank)",
+  "lat": -10.0,
+  "lon": -127.0,
+  "category": "volcanic",
+  "summary": "Young Amazonian basaltic lava flows of the Tharsis rise southwest of Arsia Mons; analog target for basaltic volcanism, lava tubes/skylights (Arsia 'seven sisters' pits). High elevation means thin air, more radiation and very dusty, low-thermal-inertia surface.",
+  "missions": [
+   "Orbital only (THEMIS, HiRISE, CTX)"
+  ],
+  "env": {
+   "t_surface_mean_C": -60,
+   "t_surface_min_C": -115,
+   "t_surface_max_C": 10,
+   "diurnal_range_C": 110,
+   "pressure_kPa": 0.35,
+   "water_vapor_note": "Thin column (~3-6 pr-um) at high elevation; afternoon orographic water-ice clouds over the Tharsis volcanoes (aphelion season).",
+   "atm_water_ppm_or_precip_um": 5,
+   "uv_note": "Thinner atmosphere -> higher UVC dose than lowlands.",
+   "uv_relative_to_earth": 900,
+   "albedo": 0.27,
+   "sun_elevation_max_deg": 90,
+   "illumination_fraction": 0.5,
+   "earth_visibility_fraction": null,
+   "slope_deg_typical": 3,
+   "terrain": "Lobate lava flows, collapse pits and sinuous channels; thick dust mantle.",
+   "geology": [
+    "volcanic-basalt",
+    "lava-tube",
+    "aeolian-dust"
+   ],
+   "ice": "none",
+   "dust": "Very high dust cover (low thermal inertia region).",
+   "radiation_mSv_per_day": 0.8
+  },
+  "sources": [
+   {
+    "label": "Cushing et al. 2007 GRL: candidate cave skylights on Arsia Mons",
+    "url": "https://doi.org/10.1029/2007GL030709"
+   },
+   {
+    "label": "Mars Climate Database (LMD)",
+    "url": "http://www-mars.lmd.jussieu.fr/"
+   }
+  ],
+  "confidence": "low"
+ },
+ {
+  "id": "mars-valles-marineris-melas",
+  "body": "mars",
+  "name": "Valles Marineris (Melas/Candor Chasma)",
+  "lat": -10.5,
+  "lon": -72.5,
+  "category": "canyon",
+  "summary": "Central Valles Marineris troughs with kilometre-thick layered sulfate deposits and possible recurring slope lineae; deep floors give higher pressure; spectacular canyon geology for a science base.",
+  "missions": [
+   "Orbital only (MRO CRISM/HiRISE, MEX OMEGA); former MSL/M2020 candidate (Melas)"
+  ],
+  "env": {
+   "t_surface_mean_C": -45,
+   "t_surface_min_C": -90,
+   "t_surface_max_C": 20,
+   "diurnal_range_C": 85,
+   "pressure_kPa": 0.9,
+   "water_vapor_note": "Column ~10 pr-um; TGO/FREND reported a hydrogen-rich (possible ice/hydrated mineral) region in Candor Chaos.",
+   "atm_water_ppm_or_precip_um": 10,
+   "uv_note": "Unshielded UVC; canyon walls shade parts of the floor.",
+   "uv_relative_to_earth": 650,
+   "albedo": 0.18,
+   "sun_elevation_max_deg": 90,
+   "illumination_fraction": 0.45,
+   "earth_visibility_fraction": null,
+   "slope_deg_typical": 10,
+   "terrain": "Canyon floors 3-5 km below datum, walls up to 7-8 km high, landslides and interior layered deposits.",
+   "geology": [
+    "sedimentary",
+    "evaporite",
+    "hydrated-minerals",
+    "volcanic-basalt",
+    "aeolian-dust"
+   ],
+   "ice": "none",
+   "dust": "Moderate.",
+   "radiation_mSv_per_day": 0.58
+  },
+  "sources": [
+   {
+    "label": "Mitrofanov et al. 2022 Icarus: TGO FREND hydrogen in Candor Chaos",
+    "url": "https://doi.org/10.1016/j.icarus.2021.114805"
+   },
+   {
+    "label": "Mars Climate Database (LMD)",
+    "url": "http://www-mars.lmd.jussieu.fr/"
+   }
+  ],
+  "confidence": "low"
+ },
+ {
+  "id": "mars-phoenix",
+  "body": "mars",
+  "name": "Phoenix Landing Site (Green Valley, Vastitas Borealis)",
+  "lat": 68.22,
+  "lon": -125.75,
+  "category": "polar",
+  "summary": "Arctic plain where Phoenix excavated water ice only ~3-18 cm below the surface and found perchlorate (~0.6 wt%) and carbonate in alkaline soil; observed snowfall from clouds.",
+  "missions": [
+   "Phoenix (2008)"
+  ],
+  "env": {
+   "t_surface_mean_C": -60,
+   "t_surface_min_C": -100,
+   "t_surface_max_C": -15,
+   "diurnal_range_C": 70,
+   "pressure_kPa": 0.8,
+   "water_vapor_note": "Highest near-surface vapor of any lander site in summer (~30-50 pr-um column); night frost, ground fog and snow virga observed by LIDAR.",
+   "atm_water_ppm_or_precip_um": 40,
+   "uv_note": "Lower sun angle and longer path reduce peak UV, but no ozone shield.",
+   "uv_relative_to_earth": 300,
+   "albedo": 0.2,
+   "sun_elevation_max_deg": 47,
+   "illumination_fraction": 0.7,
+   "earth_visibility_fraction": null,
+   "slope_deg_typical": 1,
+   "terrain": "Polygonal patterned ground (2-5 m polygons) over ice-cemented soil.",
+   "geology": [
+    "ground-ice",
+    "aeolian-dust",
+    "evaporite"
+   ],
+   "ice": "shallow-ground-ice",
+   "dust": "Low-moderate; CO2 frost buries site in winter (lander killed by ice loading).",
+   "radiation_mSv_per_day": 0.65
+  },
+  "sources": [
+   {
+    "label": "Smith et al. 2009 Science: H2O at the Phoenix site",
+    "url": "https://doi.org/10.1126/science.1172339"
+   },
+   {
+    "label": "Hecht et al. 2009 Science: perchlorate at Phoenix",
+    "url": "https://doi.org/10.1126/science.1172466"
+   },
+   {
+    "label": "Renno et al. 2009 JGR (summarizes Phoenix ice-free topsoil depth 3-18 cm, Smith et al. 2009)",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2009je003362"
+   },
+   {
+    "label": "NASA Mars Phoenix mission",
+    "url": "https://science.nasa.gov/mission/mars-phoenix/"
+   }
+  ],
+  "confidence": "medium"
+ }
+]

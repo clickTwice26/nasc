@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Analog Atlas — Earth's twins of Moon-base &amp; Mars sites</title>
+<meta name="description" content="Analog Atlas uses open NASA Earth data to find and characterise terrestrial analogs for Artemis Moon-base regions and Mars landing sites. NASA Space Apps 2026.">
+<meta property="og:title" content="Analog Atlas">
+<meta property="og:description" content="Find Earth's best analogs for Artemis III Moon-base regions and Mars landing sites — from open NASA data.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='26' cy='32' r='18' fill='%232f7bff'/%3E%3Ccircle cx='46' cy='22' r='9' fill='%23c9c7c0'/%3E%3Ccircle cx='48' cy='46' r='7' fill='%23d4693a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Analog Atlas home">
+    <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><circle cx="26" cy="32" r="18" fill="#2f7bff"/><path d="M14 26c6 2 10-4 16-2s6 8 12 6" stroke="#6fe0b0" stroke-width="3" fill="none"/><circle cx="46" cy="20" r="9" fill="#c9c7c0"/><circle cx="49" cy="46" r="7" fill="#d4693a"/></svg>
+    <span><b>Analog Atlas</b><small>Earth's twins of Moon-base &amp; Mars sites</small></span>
+  </a>
+  <nav class="tabs" role="tablist" aria-label="Views">
+    <button role="tab" class="tab on" data-view="explore" aria-selected="true">Explore</button>
+    <button role="tab" class="tab" data-view="discover" aria-selected="false">Discoveries</button>
+    <button role="tab" class="tab" data-view="validate" aria-selected="false">Validation</button>
+    <a class="tab" href="methods.html">Methods</a>
+    <a class="tab" href="mission.html">Landing geometry</a>
+  </nav>
+  <button id="tourBtn" class="btn ghost" type="button">▶ 60-second tour</button>
+</header>
+
+<main id="explore" class="view on">
+  <!-- LEFT: destination + objective -->
+  <aside class="panel left" aria-label="Choose destination and mission objective">
+    <section class="step" id="stepTarget">
+      <h2><span class="num">1</span> Destination</h2>
+      <div class="seg" role="radiogroup" aria-label="Body">
+        <button class="on" data-body="moon" role="radio" aria-checked="true">🌕 Moon</button>
+        <button data-body="mars" role="radio" aria-checked="false">🔴 Mars</button>
+      </div>
+      <div class="mini-wrap"><canvas id="mini" aria-label="Target body globe — click a marker to choose a site"></canvas><span class="mini-hint">drag · click a marker</span></div>
+      <label class="sr" for="targetSel">Target site</label>
+      <select id="targetSel"></select>
+      <article id="targetCard" class="tcard"></article>
+    </section>
+
+    <section class="step" id="stepPreset">
+      <h2><span class="num">2</span> Mission objective</h2>
+      <div id="presets" class="chips" role="radiogroup" aria-label="Mission objective"></div>
+      <p id="presetBlurb" class="muted"></p>
+      <details id="weights">
+        <summary>Fine-tune factor weights</summary>
+        <div id="sliders"></div>
+        <label class="row"><input type="checkbox" id="aggWlc"> Compensatory scoring (linear sum instead of geometric mean)</label>
+      </details>
+    </section>
+
+    <section class="step" id="stepFilter">
+      <h2><span class="num">3</span> Filters</h2>
+      <label class="row"><input type="checkbox" id="onlyNew"> Only <b>new</b> sites (&gt; <output id="novOut">250</output> km from known analogs)</label>
+      <input id="novKm" type="range" min="100" max="1000" step="50" value="250" aria-label="Novelty distance in km">
+      <label class="row">Max distance to an airport, town or station: <output id="accOut">any</output></label>
+      <input id="accKm" type="range" min="50" max="1000" step="50" value="1000" aria-label="Maximum access distance in km">
+      <label class="row"><input type="checkbox" id="showKnown" checked> Show established analog sites ◆</label>
+    </section>
+  </aside>
+
+  <!-- CENTER: globe -->
+  <section class="stage" aria-label="Earth globe">
+    <canvas id="globe"></canvas>
+    <div class="stage-ui">
+      <div class="layer">
+        <label for="layerSel">Layer</label>
+        <select id="layerSel"></select>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div id="tip" class="tip" role="status" aria-live="polite"></div>
+      <div id="busy" class="busy">Loading NASA data…</div>
+      <div class="stage-help">Drag to rotate · scroll/pinch to zoom · click any land to analyse it</div>
+    </div>
+  </section>
+
+  <!-- RIGHT: candidates + report -->
+  <aside class="panel right" aria-label="Results">
+    <div class="rtabs" role="tablist">
+      <button class="rtab on" data-r="cands" role="tab" aria-selected="true">Top analogs</button>
+      <button class="rtab" data-r="report" role="tab" aria-selected="false">Site report</button>
+    </div>
+    <section id="cands" class="rview on">
+      <p class="muted small" id="candHead"></p>
+      <ol id="candList" class="cands"></ol>
+    </section>
+    <section id="report" class="rview">
+      <p class="muted">Click a candidate or any land on the globe.</p>
+    </section>
+  </aside>
+</main>
+
+<main id="discover" class="view doc" tabindex="-1">
+  <div class="doc-inner">
+    <h1>Discoveries: new analog candidates</h1>
+    <p class="lead">For every Artemis III region and Mars site, these are the highest-fidelity Earth locations that lie <b>more than 300 km from any established analog field site</b> — under-characterised places worth a field campaign. Computed with the balanced objective; open any row in the explorer to see the full report.</p>
+    <h2 class="h2">Highlights — regions that recur across targets</h2>
+    <div id="discHi" class="hi-grid"></div>
+    <h2 class="h2">All targets</h2>
+    <div id="discTable" class="table-wrap"></div>
+  </div>
+</main>
+
+<main id="validate" class="view doc" tabindex="-1">
+  <div class="doc-inner">
+    <h1>Does it work? Validation against 36 established analog sites</h1>
+    <p class="lead">A trustworthy analog finder must rediscover the places NASA, ESA, CSA, ISRO, CNSA and the Austrian Space Forum already use. For each target we take the established field sites whose environment matches its category (polar &amp; ice sites for the lunar south pole, arid &amp; evaporite sites for Mars sedimentary basins, volcanic &amp; lava-tube sites for lunar maria and pits) and ask: <i>how often does a known analog outscore a random land cell?</i> That probability is the ROC AUC — 0.5 is chance, 1.0 is perfect.</p>
+    <div id="kpis" class="kpis"></div>
+    <div class="grid2">
+      <figure class="card"><figcaption>AUC per target (balanced objective)</figcaption><div id="aucChart"></div></figure>
+      <figure class="card"><figcaption>Where the known sites rank — <select id="valTarget" aria-label="Target for rank plot"></select></figcaption><div id="rankChart"></div></figure>
+    </div>
+    <div class="card">
+      <h3>AUC by mission objective</h3>
+      <div id="presetTable" class="table-wrap"></div>
+      <p class="muted small">Negative controls (Amazon, Congo, Paris, Singapore) rank below the 50th percentile for every Mars target — checked in the automated test-suite (<code>tests/engine.test.mjs</code>). Sites that score low are informative too: Rio Tinto and Pavilion Lake are <i>process</i> analogs (acid mineralogy, microbialites) rather than <i>environmental</i> analogs, and small islands/peaks (Mauna Kea, Teide) are averaged with their wet lowlands at 0.5° resolution.</p>
+    </div>
+  </div>
+</main>
+
+<div id="tour" class="tour" hidden>
+  <div class="tour-card" role="dialog" aria-modal="false" aria-labelledby="tourTitle">
+    <p class="tour-step" id="tourStep"></p>
+    <h3 id="tourTitle"></h3>
+    <p id="tourText"></p>
+    <div class="tour-nav"><button class="btn ghost" id="tourSkip" type="button">Close</button><button class="btn" id="tourNext" type="button">Next →</button></div>
+  </div>
+</div>
+
+<script src="assets/vendor/three.r128.min.js"></script>
+<script src="assets/vendor/OrbitControls.r128.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

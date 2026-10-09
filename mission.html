@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Landing Geometry — Analog Atlas</title>
+<meta name="description" content="Sun–Earth–Moon geometry for a crewed lunar south-pole landing, computed with real ephemerides (Astronomy Engine), and the Earth latitudes that see the same grazing Sun.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#04060c;--panel:rgba(10,14,24,.86);--ink:#e8ecf4;--dim:#8d97ab;--acc:#ffb347;--ok:#6fe0b0;--line:#232c40}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font:13px/1.45 Inter,"Segoe UI",sans-serif;overflow:hidden}
+canvas{display:block;width:100%;height:100%;touch-action:none}
+.p{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;backdrop-filter:blur(6px)}
+#info{top:calc(56px + env(safe-area-inset-top,0px));left:8px;width:min(330px,calc(100% - 16px));max-height:calc(100% - 230px);overflow:auto}
+#info h1{font:600 14px "Space Grotesk",sans-serif;margin:0 0 6px;color:var(--acc)}
+table{border-collapse:collapse;width:100%}td{padding:2px 0;vertical-align:top;border-bottom:1px dashed #1c2740}td:first-child{color:var(--dim);padding-right:8px}td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.g{color:var(--ok)}.w{color:var(--acc)}
+#ctl{left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+#ev{font-weight:700;color:var(--ok);margin-bottom:4px;font-family:"Space Grotesk",sans-serif;font-size:14px}
+#tl{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;align-items:center}
+button,input{font:inherit;color:inherit}
+button{background:#151c2e;border:1px solid #2c3854;border-radius:6px;padding:5px 9px;cursor:pointer}
+button:hover,button.on{border-color:var(--acc);color:var(--acc)}button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--acc)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+input[type=datetime-local]{background:#0d1424;border:1px solid #2c3854;border-radius:6px;padding:4px 6px}
+small{color:var(--dim)}
+.top{position:absolute;top:0;left:0;right:0;display:flex;gap:14px;align-items:center;padding:8px 14px;padding-top:calc(8px + env(safe-area-inset-top,0px));background:linear-gradient(180deg,#0b1222,rgba(7,11,21,.6));border-bottom:1px solid var(--line)}
+.top a{color:var(--dim);text-decoration:none}.top a:hover{color:var(--ink)}.top b{font:700 16px "Space Grotesk",sans-serif}
+#analog{position:absolute;top:calc(56px + env(safe-area-inset-top,0px));right:8px;width:min(300px,calc(100% - 16px))}
+#analog h2{font:600 13px "Space Grotesk",sans-serif;margin:0 0 6px;color:var(--ok)}
+#analog a{color:#5aa2ff}
+@media (max-width:760px){#analog{display:none}#info{max-height:38%}}
+</style></head><body>
+<canvas id="c"></canvas>
+<div class="top"><b>Analog Atlas</b><a href="./">← Explorer</a><a href="methods.html">Methods</a><span style="color:var(--acc)">Landing geometry</span></div>
+<div class="p" id="info"><h1>Sun · Earth · Moon — lunar south-pole landing</h1><table id="tb"></table></div>
+<div class="p" id="analog"><h2>Earth analog of this lighting</h2><div id="an"></div></div>
+<div class="p" id="ctl">
+<div id="ev"></div>
+<div id="tl"></div>
+<input id="sl" type="range" min="0" max="4.5" step="0.001" value="0" aria-label="Mission time in days">
+<small>Real ephemerides (Astronomy Engine, VSOP87/ELP) for the chosen launch date. Drag to orbit · scroll/pinch to zoom · Earth–Moon distance drawn at ½ scale (sizes true relative to Earth). Trajectory is a schematic 3-day transfer, not a flight design — use JPL Horizons/GMAT for real windows.</small>
+</div>
+<script src="assets/vendor/three.r128.min.js"></script>
+<script src="assets/vendor/astronomy-2.1.19.browser.min.js"></script>
+<script>
+/* global THREE, Astronomy */
+const D2R = Math.PI / 180, R2D = 180 / Math.PI;
+const PAD = { lat: 28.573, lon: -80.649, name: "LC-39B, Kennedy Space Center" };
+const RE = 6371, AU = 149597870.7, SCALE = 0.5;          // Earth–Moon distance compressed 2×
+const TARR = 3, TDESC = 4.2, TEND = 4.5;                  // days: arrival, descent start, touchdown
+let LAUNCH = new Date("2027-09-29T12:00:00Z");
+
+// J2000 equatorial (X,Y,Z) → scene (x=X, y=Z, z=−Y): +y is the celestial north pole.
+const toScene = (v) => new THREE.Vector3(v.x, v.z, -v.y);
+const sceneDir = (ra, dec) => new THREE.Vector3(Math.cos(dec) * Math.cos(ra), Math.sin(dec), -Math.cos(dec) * Math.sin(ra));
+
+const cv = document.getElementById("c"), R = new THREE.WebGLRenderer({ canvas: cv, antialias: true });
+R.setPixelRatio(Math.min(devicePixelRatio, 2));
+const S = new THREE.Scene(), cam = new THREE.PerspectiveCamera(45, 1, 0.02, 900);
+const TL = new THREE.TextureLoader();
+S.add(new THREE.AmbientLight(0x334466, 0.35));
+const sunL = new THREE.DirectionalLight(0xfff2dd, 1.5); S.add(sunL);
+const sun = new THREE.Mesh(new THREE.SphereGeometry(5, 32, 32), new THREE.MeshBasicMaterial({ color: 0xffc94d })); S.add(sun);
+function label(txt, sc) {
+  const c = document.createElement("canvas"); c.width = 256; c.height = 64; const g = c.getContext("2d");
+  g.font = "bold 30px Space Grotesk, sans-serif"; g.fillStyle = "#fff"; g.textAlign = "center"; g.fillText(txt, 128, 42);
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), depthTest: false, transparent: true })); s.scale.set(sc * 4, sc, 1); return s;
+}
+const sunLab = label("Sun", 3); S.add(sunLab);
+const earth = new THREE.Mesh(new THREE.SphereGeometry(1, 64, 48), new THREE.MeshStandardMaterial({ map: TL.load("assets/textures/earth_bmng_2048.jpg"), roughness: 0.9 })); S.add(earth);
+const pad = new THREE.Mesh(new THREE.SphereGeometry(0.04, 12, 12), new THREE.MeshBasicMaterial({ color: 0xff3b3b }));
+pad.position.copy(sceneDir(PAD.lon * D2R, PAD.lat * D2R).multiplyScalar(1.01)); earth.add(pad);
+S.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -1.7, 0), new THREE.Vector3(0, 1.7, 0)]), new THREE.LineBasicMaterial({ color: 0x6fa8ff })));
+const eLab = label("Earth", 1.1); eLab.position.set(0, 2.4, 0); S.add(eLab);
+const moon = new THREE.Mesh(new THREE.SphereGeometry(0.273, 48, 32), new THREE.MeshStandardMaterial({ map: TL.load("assets/textures/moon_1024.jpg"), roughness: 1 })); S.add(moon);
+const spole = new THREE.Mesh(new THREE.SphereGeometry(0.03, 10, 10), new THREE.MeshBasicMaterial({ color: 0xff3b3b })); spole.position.set(0, -0.276, 0); moon.add(spole);
+const mlab = label("Moon", 1.1); S.add(mlab);
+const orbitLine = new THREE.Line(new THREE.BufferGeometry(), new THREE.LineBasicMaterial({ color: 0x2d3a57 })); S.add(orbitLine);
+const trajLine = new THREE.Line(new THREE.BufferGeometry(), new THREE.LineDashedMaterial({ color: 0xffb347, dashSize: 0.6, gapSize: 0.4 })); S.add(trajLine);
+const ship = new THREE.Mesh(new THREE.ConeGeometry(0.08, 0.28, 10), new THREE.MeshBasicMaterial({ color: 0x6fe0b0 })); S.add(ship);
+const guide = (n) => { const g = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]), new THREE.LineBasicMaterial({ color: n, transparent: true, opacity: 0.5 })); S.add(g); return g; };
+const gS = guide(0xffc94d), gM = guide(0xdddddd);
+{ let s = 7; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647; const p = [];
+  for (let i = 0; i < 900; i++) { const v = new THREE.Vector3(rnd() - 0.5, rnd() - 0.5, rnd() - 0.5).normalize().multiplyScalar(400); p.push(v.x, v.y, v.z); }
+  const g = new THREE.BufferGeometry(); g.setAttribute("position", new THREE.Float32BufferAttribute(p, 3)); S.add(new THREE.Points(g, new THREE.PointsMaterial({ size: 1.2, color: 0xffffff, sizeAttenuation: false }))); }
+
+// ---------------------------------------------------------------- ephemerides
+const at = (t) => Astronomy.MakeTime(new Date(LAUNCH.getTime() + t * 864e5));
+const moonKm = (t) => { const v = Astronomy.GeoMoon(at(t)); return new THREE.Vector3(v.x, v.y, v.z).multiplyScalar(AU); };
+const moonScene = (t) => toScene(moonKm(t)).multiplyScalar(SCALE / RE);
+const sunDirScene = (t) => toScene(Astronomy.GeoVector(Astronomy.Body.Sun, at(t), true)).normalize();
+
+let traj = null;
+function plan() {
+  // Moon arrival point, prograde direction and a conic from a 185 km parking orbit to it.
+  const Ma = moonScene(TARR), Mb = moonScene(TARR + 0.01);
+  const u0 = Ma.clone().normalize().negate();
+  const vel = Mb.clone().sub(Ma);
+  const w = vel.sub(u0.clone().multiplyScalar(vel.dot(u0))).normalize();
+  const rp = 1 + 185 / RE, ra = Ma.length() - 0.6;
+  const a = (rp + ra) / 2, e = (ra - rp) / (ra + rp);
+  traj = { u0, w, a, e };
+  const pts = []; for (let k = 0; k <= 160; k++) pts.push(transfer(TARR * k / 160));
+  trajLine.geometry.setFromPoints(pts); trajLine.computeLineDistances();
+  const ring = []; for (let k = 0; k <= 160; k++) ring.push(moonScene(-6 + 27.3 * k / 160));
+  orbitLine.geometry.setFromPoints(ring);
+  // default overview: look down onto the Moon's orbital plane, slightly tilted
+  const n = new THREE.Vector3().crossVectors(moonScene(0), moonScene(2)).normalize();
+  if (n.y < 0) n.negate();
+  views.over[1] = Math.min(1.2, Math.acos(n.y) + 0.45);
+  if (focus === "over") { pol = views.over[1]; az = Math.atan2(n.z, n.x) + 0.6; }
+}
+function transfer(t) {
+  const { u0, w, a, e } = traj, M = Math.PI * Math.max(0, Math.min(1, t / TARR));
+  let E = M; for (let i = 0; i < 30; i++) E = M + e * Math.sin(E);
+  const nu = 2 * Math.atan2(Math.sqrt(1 + e) * Math.sin(E / 2), Math.sqrt(1 - e) * Math.cos(E / 2)), r = a * (1 - e * Math.cos(E));
+  return u0.clone().multiplyScalar(r * Math.cos(nu)).add(w.clone().multiplyScalar(r * Math.sin(nu)));
+}
+
+function moonFrame(t) {
+  const ax = Astronomy.RotationAxis(Astronomy.Body.Moon, at(t));
+  const N = toScene(ax.north).normalize();
+  const toE = moonScene(t).negate().normalize();
+  const X = toE.sub(N.clone().multiplyScalar(toE.dot(N))).normalize(); // near side faces Earth
+  return { N, X, Z: new THREE.Vector3().crossVectors(X, N) };
+}
+
+// ---------------------------------------------------------------- UI
+let az = -0.5, pol = 1.05, dist = 70, focus = "over";
+const drag = {};
+cv.addEventListener("pointerdown", (e) => { drag[e.pointerId] = [e.clientX, e.clientY]; cv.setPointerCapture(e.pointerId); });
+cv.addEventListener("pointerup", (e) => delete drag[e.pointerId]);
+cv.addEventListener("pointermove", (e) => { const d = drag[e.pointerId]; if (!d || Object.keys(drag).length > 1) return; az -= (e.clientX - d[0]) * 0.006; pol = Math.min(3, Math.max(0.1, pol - (e.clientY - d[1]) * 0.006)); drag[e.pointerId] = [e.clientX, e.clientY]; });
+cv.addEventListener("wheel", (e) => { e.preventDefault(); dist *= Math.exp(e.deltaY * 0.001); }, { passive: false });
+let pinch = 0;
+cv.addEventListener("touchmove", (e) => { if (e.touches.length === 2) { const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); if (pinch) dist *= pinch / d; pinch = d; } }, { passive: true });
+cv.addEventListener("touchend", () => (pinch = 0));
+const views = { over: [70, 1.05], earth: [5, 1.2], moon: [2.2, 1.35], pole: [0.9, 2.6] };
+const tl = document.getElementById("tl");
+[["over", "Overview"], ["earth", "Earth & pad"], ["moon", "Moon"], ["pole", "South pole"]].forEach(([k, n]) => {
+  const b = document.createElement("button"); b.textContent = n;
+  b.onclick = () => { focus = k; dist = views[k][0]; pol = views[k][1]; [...tl.querySelectorAll("button[data-v]")].forEach((c) => c.classList.remove("on")); b.classList.add("on"); };
+  b.dataset.v = k; tl.appendChild(b);
+});
+tl.children[0].classList.add("on");
+const play = document.createElement("button"); play.textContent = "▶ Play"; tl.appendChild(play);
+let playing = false;
+play.onclick = () => { playing = !playing; play.textContent = playing ? "❚❚ Pause" : "▶ Play"; if (playing && +sl.value >= TEND) sl.value = 0; };
+const dl = document.createElement("label"); dl.innerHTML = '<small>Launch (UTC)</small> <input type="datetime-local" id="ld">'; tl.appendChild(dl);
+const ld = dl.querySelector("input"); ld.value = LAUNCH.toISOString().slice(0, 16);
+ld.addEventListener("change", () => { const d = new Date(ld.value + ":00Z"); if (!isNaN(d)) { LAUNCH = d; plan(); } });
+const sl = document.getElementById("sl");
+const EV = [[0, `Launch from ${PAD.name}`], [0.1, "Trans-lunar injection burn (T+2.4 h)"], [0.5, "Coast toward the Moon’s future position"], [TARR, "Lunar orbit insertion — polar orbit"], [TDESC, "Powered descent begins over the south pole"], [TEND, "Touchdown at the lunar south pole"]];
+const LB = [["UTC", "utc"], ["Mission time", "t"], ["Moon phase", "ph"], ["Earth–Moon distance", "em"], ["Ship", "alt"], ["Moon declination", "md"], ["Moon elevation at pad", "mel"], ["Sun elevation at pad", "sel"], ["Sun elevation at lunar S pole", "pole"], ["Earth elevation at lunar S pole", "polE"], ["Sub-solar latitude (Earth)", "ss"]];
+const rows = {}, tb = document.getElementById("tb");
+LB.forEach(([n, k]) => { const r = tb.insertRow(); r.insertCell().textContent = n; rows[k] = r.insertCell(); });
+const f = (v, d = 0) => v.toLocaleString("en-US", { maximumFractionDigits: d, minimumFractionDigits: d });
+const obs = new Astronomy.Observer(PAD.lat, PAD.lon, 0);
+const elev = (body, time) => { const q = Astronomy.Equator(body, time, obs, true, true); return Astronomy.Horizon(time, obs, q.ra, q.dec, "normal").altitude; };
+
+function update(t) {
+  const time = at(t);
+  const M = moonScene(t), sdir = sunDirScene(t);
+  moon.position.copy(M); mlab.position.copy(M).add(new THREE.Vector3(0, 1, 0));
+  const { N, X, Z } = moonFrame(t);
+  moon.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(X, N, Z));
+  earth.rotation.y = Astronomy.SiderealTime(time) * 15 * D2R;
+  sun.position.copy(sdir).multiplyScalar(80); sunLab.position.copy(sdir).multiplyScalar(80).add(new THREE.Vector3(0, 8, 0));
+  sunL.position.copy(sdir).multiplyScalar(100);
+  // ship
+  let sp;
+  if (t <= TARR) sp = transfer(t);
+  else {
+    const w = t < TDESC ? -Math.PI / 2 - (TDESC - t) * Math.PI * 6 : -Math.PI / 2;
+    const rad = t > TDESC ? 0.7 - ((t - TDESC) / (TEND - TDESC)) * 0.42 : 0.7;
+    sp = M.clone().add(X.clone().multiplyScalar(rad * Math.cos(w))).add(N.clone().multiplyScalar(rad * Math.sin(w)));
+  }
+  ship.position.copy(sp); ship.lookAt(M); ship.rotateX(Math.PI / 2);
+  gS.geometry.setFromPoints([new THREE.Vector3(), sdir.clone().multiplyScalar(70)]); gM.geometry.setFromPoints([new THREE.Vector3(), M]);
+
+  // readouts
+  const d = new Date(LAUNCH.getTime() + t * 864e5);
+  rows.utc.textContent = d.toISOString().slice(0, 16).replace("T", " ");
+  rows.t.textContent = `T+${Math.floor(t)}d ${Math.floor(t * 24) % 24}h ${Math.floor(t * 1440) % 60}m`;
+  const ill = Astronomy.Illumination(Astronomy.Body.Moon, time), ph = Astronomy.MoonPhase(time);
+  rows.ph.textContent = `${f(ill.phase_fraction * 100)}% lit, ${ph < 180 ? "waxing" : "waning"}`;
+  const mk = moonKm(t);
+  rows.em.textContent = `${f(mk.length())} km`;
+  rows.alt.textContent = t > TARR ? `${f(Math.max(0, (sp.distanceTo(M) - 0.273) * 1737 / 0.273))} km above Moon` : `${f(Math.max(0, t < 0.1 ? 185 : (sp.length() - 1) * RE / SCALE))} km from Earth`;
+  const mq = Astronomy.Equator(Astronomy.Body.Moon, time, obs, true, true);
+  rows.md.textContent = `${f(mq.dec, 1)}°`;
+  rows.mel.textContent = `${f(elev(Astronomy.Body.Moon, time), 1)}°`;
+  rows.sel.textContent = `${f(elev(Astronomy.Body.Sun, time), 1)}°`;
+  // lunar south pole: local zenith = −N
+  const sFromMoon = toScene(Astronomy.GeoVector(Astronomy.Body.Sun, time, true)).multiplyScalar(AU).sub(toScene(mk)).normalize();
+  const eFromMoon = toScene(mk).negate().normalize();
+  const sunPole = Math.asin(-sFromMoon.dot(N)) * R2D, earthPole = Math.asin(-eFromMoon.dot(N)) * R2D;
+  rows.pole.textContent = `${sunPole >= 0 ? "+" : ""}${f(sunPole, 2)}° ${sunPole > 0 ? "(grazing, long shadows)" : "(Sun below flat horizon — peaks may still be lit)"}`;
+  rows.pole.className = sunPole > 0 ? "g" : "w";
+  rows.polE.textContent = `${earthPole >= 0 ? "+" : ""}${f(earthPole, 2)}° ${earthPole >= 0 ? "(Earth visible — direct comms)" : "(Earth below horizon — relay needed)"}`;
+  rows.polE.className = earthPole >= 0 ? "g" : "";
+  const sEq = Astronomy.Equator(Astronomy.Body.Sun, time, obs, true, true);
+  rows.ss.textContent = `${f(sEq.dec, 2)}°`;
+  // Earth analog latitude: where the noon Sun stands at the same elevation as at the lunar pole
+  const el = Math.max(0.5, sunPole + 0.27); // +disk radius: the upper limb is what lights the peaks
+  const latS = -(90 - el) + sEq.dec, latN = 90 - el + sEq.dec;
+  const best = Math.abs(latS) <= 90 ? latS : latN;
+  document.getElementById("an").innerHTML = `Right now the Sun stands <b>${f(sunPole, 2)}°</b> above the lunar south-pole horizon. On Earth, the noon Sun is that low today at about <b>${f(Math.abs(best), 1)}°${best < 0 ? "S" : "N"}</b>${Math.abs(best) > 60 ? (best < 0 ? " — Antarctic interior, e.g. the Prince Charles Mountains and Victoria Land oases." : " — high Arctic, e.g. Svalbard, Devon Island, northern Greenland.") : "."}<br><br>These grazing-light sites are what Analog Atlas ranks highest for the <b>Polar lighting &amp; power</b> objective.<br><a href="./#explore?t=moon-connecting-ridge&p=power">Open the analog finder →</a>`;
+  let ev = EV[0][1]; EV.forEach((e) => { if (t >= e[0]) ev = e[1]; }); document.getElementById("ev").textContent = ev;
+}
+function resize() { const w = innerWidth, h = innerHeight; R.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
+addEventListener("resize", resize); resize(); plan();
+let last = performance.now();
+(function loop(now) {
+  requestAnimationFrame(loop);
+  const dt = (now - last) / 1000; last = now;
+  if (playing) { let v = +sl.value + dt * 0.35; if (v >= TEND) { v = TEND; playing = false; play.textContent = "▶ Play"; } sl.value = v; }
+  const t = +sl.value; update(t);
+  const tgt = focus === "over" || focus === "earth" ? new THREE.Vector3() : moon.position.clone();
+  if (focus === "pole") tgt.add(moonFrame(t).N.multiplyScalar(-0.25));
+  cam.position.set(tgt.x + dist * Math.sin(pol) * Math.cos(az), tgt.y + dist * Math.cos(pol), tgt.z + dist * Math.sin(pol) * Math.sin(az));
+  cam.lookAt(tgt); R.render(S, cam);
+})(last);
+</script></body></html>
