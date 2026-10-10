@@ -487,6 +487,14 @@ export function robustness(grid, target, groupWeights, candidates, { runs = 30, 
   return hits;
 }
 
+/** Letter grade from an absolute twin score (0–1): S ≥ 0.75, A ≥ 0.60, B ≥ 0.45, C ≥ 0.30.
+ *  A display label for the game layer — the lunar pole tops out around B because no place
+ *  on Earth is airless and −100 °C, which is exactly the honest message. */
+export const GRADE_BANDS = { S: 0.75, A: 0.6, B: 0.45, C: 0.3 };
+export function gradeOf(score) {
+  return score >= 0.75 ? "S" : score >= 0.6 ? "A" : score >= 0.45 ? "B" : score >= 0.3 ? "C" : "D";
+}
+
 export function regionLabel(grid, i) {
   const code = grid.cat.region[i];
   const near = (code & 0x8000) !== 0;

@@ -3,30 +3,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Landing Geometry — Analog Atlas</title>
 <meta name="description" content="Sun–Earth–Moon geometry for a crewed lunar south-pole landing, computed with real ephemerides (Astronomy Engine), and the Earth latitudes that see the same grazing Sun.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-:root{color-scheme:dark;--bg:#04060c;--panel:rgba(10,14,24,.86);--ink:#e8ecf4;--dim:#8d97ab;--acc:#ffb347;--ok:#6fe0b0;--line:#232c40}
+:root{color-scheme:dark;--bg:#02040a;--panel:rgba(4,14,28,.8);--ink:#e6faff;--dim:#7f9bb0;--acc:#00e5ff;--ok:#7cffb2;--line:rgba(0,229,255,.3)}
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font:13px/1.45 Inter,"Segoe UI",sans-serif;overflow:hidden}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font:13px/1.45 "Exo 2","Segoe UI",sans-serif;overflow:hidden}
 canvas{display:block;width:100%;height:100%;touch-action:none}
-.p{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;backdrop-filter:blur(6px)}
+.p{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:2px;padding:10px 12px;backdrop-filter:blur(8px);box-shadow:0 0 18px rgba(0,229,255,.12)}
 #info{top:calc(56px + env(safe-area-inset-top,0px));left:8px;width:min(330px,calc(100% - 16px));max-height:calc(100% - 230px);overflow:auto}
-#info h1{font:600 14px "Space Grotesk",sans-serif;margin:0 0 6px;color:var(--acc)}
-table{border-collapse:collapse;width:100%}td{padding:2px 0;vertical-align:top;border-bottom:1px dashed #1c2740}td:first-child{color:var(--dim);padding-right:8px}td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+#info h1{font:700 12px Orbitron,sans-serif;letter-spacing:.1em;text-transform:uppercase;margin:0 0 6px;color:var(--acc);text-shadow:0 0 10px rgba(0,229,255,.6)}
+table{border-collapse:collapse;width:100%}td{padding:2px 0;vertical-align:top;border-bottom:1px dashed #1c2740}td:first-child{color:var(--dim);padding-right:8px}td:last-child{text-align:right;font:12px "JetBrains Mono",monospace}
 .g{color:var(--ok)}.w{color:var(--acc)}
 #ctl{left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px))}
-#ev{font-weight:700;color:var(--ok);margin-bottom:4px;font-family:"Space Grotesk",sans-serif;font-size:14px}
+#ev{font-weight:700;color:var(--ok);margin-bottom:4px;font-family:Orbitron,sans-serif;font-size:14px}
 #tl{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;align-items:center}
 button,input{font:inherit;color:inherit}
-button{background:#151c2e;border:1px solid #2c3854;border-radius:6px;padding:5px 9px;cursor:pointer}
+button{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.35);border-radius:2px;padding:5px 10px;cursor:pointer;font:700 11px Orbitron,sans-serif;letter-spacing:.08em;text-transform:uppercase}
 button:hover,button.on{border-color:var(--acc);color:var(--acc)}button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--acc)}
-input[type=range]{width:100%;accent-color:var(--acc)}
+input[type=range]{width:100%;accent-color:#ff3df0}
 input[type=datetime-local]{background:#0d1424;border:1px solid #2c3854;border-radius:6px;padding:4px 6px}
 small{color:var(--dim)}
 .top{position:absolute;top:0;left:0;right:0;display:flex;gap:14px;align-items:center;padding:8px 14px;padding-top:calc(8px + env(safe-area-inset-top,0px));background:linear-gradient(180deg,#0b1222,rgba(7,11,21,.6));border-bottom:1px solid var(--line)}
-.top a{color:var(--dim);text-decoration:none}.top a:hover{color:var(--ink)}.top b{font:700 16px "Space Grotesk",sans-serif}
+.top a{color:var(--dim);text-decoration:none}.top a:hover{color:var(--ink)}.top b{font:900 15px Orbitron,sans-serif;letter-spacing:.14em;text-shadow:0 0 10px rgba(0,229,255,.6)}
 #analog{position:absolute;top:calc(56px + env(safe-area-inset-top,0px));right:8px;width:min(300px,calc(100% - 16px))}
-#analog h2{font:600 13px "Space Grotesk",sans-serif;margin:0 0 6px;color:var(--ok)}
+#analog h2{font:600 13px Orbitron,sans-serif;margin:0 0 6px;color:var(--ok)}
 #analog a{color:#5aa2ff}
 @media (max-width:760px){#analog{display:none}#info{max-height:38%}}
 </style></head><body>

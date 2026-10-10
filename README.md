@@ -26,8 +26,22 @@ Mission teams test rovers, drills, spacesuits, habitats and crews at terrestrial
 4. **Get distinct candidates.** You get the 12 best regions at least 350 km apart. Each is flagged **NEW** if it is far from every established analog, and carries an **access** distance and a **rank-stability** score from a Monte-Carlo weight test.
 5. **Read the report card.** Click any land: a factor-by-factor match against the target, a six-axis radar chart, the *limiting factor*, a head-to-head with the nearest established analog, and a **downloadable field brief** (Markdown).
 6. **Check the evidence.** The Validation tab shows the method rediscovering 36 established analog sites. The Discoveries tab lists new candidates for every target.
+7. **Play it.** A mission-control HUD with an XP and rank system, 14 achievements, a discovery logbook, and **Analog Hunt**, a five-round game where you try to beat the algorithm (see below).
 
 ![Site report: Atacama for Gale crater](docs/img/report-mars.jpg)
+
+## Mission Control HUD & game layer
+
+Analog science is the core, and the game layer is there to make people *want* to explore it, whether they are students, the public or judges.
+
+* **Boot sequence and scanner sweep.** The boot log reports the real loading steps (NASA POWER layers, 88,648 cells, validation AUC). Every scan sweeps a beam around the globe that reveals the twin-score heatmap behind it.
+* **Twin grades S → D.** Each candidate gets a letter from its absolute twin score (S ≥ 75, A ≥ 60, B ≥ 45, C ≥ 30). The lunar south pole tops out at **B** because nowhere on Earth is airless and −100 °C, which is an honest message in game form. The lunar lava-tube pits reach **S** (about 82–84), and Gale, Tharsis and Valles Marineris reach **A**.
+* **Analog Hunt.** You get five random Moon/Mars targets, each with an intel brief. Click where you think the best Earth twin is, with the heatmap hidden. Your pick scores up to 1,000 points from its Earth percentile, plus a bullseye bonus within 300 km of the algorithm's #1. The reveal then shows the full field, so every round teaches why the Atacama and not the Sahara.
+* **XP and ranks.** Eight ranks run from Cadet to Artemis Legend. You earn XP for scanning new targets, trying objectives, inspecting sites in new countries, logging discoveries (NEW sites earn the most), exporting field briefs, reviewing validation and finishing hunts.
+* **14 achievements** (First Light, Polar Pioneer, Twin Finder, Trailblazer, Sharpshooter…) and a **discovery log** that exports to Markdown. Everything is stored only in your browser.
+* **Sound.** Synthesised WebAudio cues, with no audio files. They start only after your first click and can be muted. Reduced-motion preferences turn the animations off.
+
+![Analog Hunt](docs/img/hunt.jpg)
 
 ## Key results
 
@@ -87,11 +101,12 @@ python3 pipeline/fetch.py && python3 pipeline/build.py && node tools/evaluate.mj
 |---|---|
 | `index.html`, `js/app.js`, `css/app.css` | The explorer, discoveries and validation views |
 | `js/engine.js` | Scoring engine (pure functions, shared by browser, worker and tests) |
-| `js/globe.js`, `js/charts.js`, `js/worker.js` | three.js globes, SVG charts, Monte-Carlo rank-stability worker |
+| `js/globe.js`, `js/charts.js`, `js/worker.js` | three.js globes (scanner beam, reticle, hunt pins), SVG charts, Monte-Carlo rank-stability worker |
+| `js/game.js` | Game layer: XP/ranks, achievements, discovery log, toasts, synthesised sound (cosmetic only, never changes a score) |
 | `pipeline/fetch.py`, `pipeline/build.py` | Reproducible data pipeline → `data/earth.bin` + `data/earth.json` |
 | `data/targets.json`, `data/analogs.json` | 23 cited planetary targets · 38 established analog sites |
 | `tools/evaluate.mjs` | Validation and discovery run → `data/validation.json`, `data/discoveries.json` |
-| `tests/engine.test.mjs` | 12 tests incl. physical sanity, controls and the AUC regression guard |
+| `tests/engine.test.mjs` | 13 tests incl. physical sanity, controls, grades and the AUC regression guard |
 | `methods.html` | Full methodology, data inventory, limitations, roadmap, credits |
 | `mission.html` | Lunar south-pole landing geometry with real ephemerides |
 | `docs/PITCH.md` | Judging pitch: slides outline and 30-second demo script |

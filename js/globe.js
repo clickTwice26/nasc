@@ -105,21 +105,42 @@ export function createEarth(canvas, { texture }) {
   ovTex.minFilter = THREE.LinearFilter;
   const overlay = new THREE.Mesh(new THREE.SphereGeometry(1.002, 128, 96), new THREE.MeshBasicMaterial({ map: ovTex, transparent: true, depthWrite: false }));
   scene.add(overlay);
-  scene.add(atmosphere(1.12, 0x4f8cff, 3.2));
+  scene.add(atmosphere(1.12, 0x2fd8ff, 3.0));
 
   // graticule
   const gpts = [];
   for (let la = -60; la <= 60; la += 30) for (let lo = -180; lo < 180; lo += 3) gpts.push(vec3(la, lo, 1.004), vec3(la, lo + 3, 1.004));
   for (let lo = -180; lo < 180; lo += 30) for (let la = -87; la < 87; la += 3) gpts.push(vec3(la, lo, 1.004), vec3(la + 3, lo, 1.004));
-  scene.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(gpts), new THREE.LineBasicMaterial({ color: 0x9fb4ff, transparent: true, opacity: 0.07 })));
+  scene.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(gpts), new THREE.LineBasicMaterial({ color: 0x38e8ff, transparent: true, opacity: 0.13 })));
 
   const markers = new THREE.Group();
   const known = new THREE.Group();
   scene.add(markers, known);
 
-  const ring = new THREE.Mesh(new THREE.RingGeometry(0.018, 0.026, 40), new THREE.MeshBasicMaterial({ color: 0xffb347, side: THREE.DoubleSide, transparent: true, depthTest: true }));
+  // targeting reticle: solid inner ring + rotating segmented outer ring
+  const ring = new THREE.Group();
+  const rmat = (c, o = 1) => new THREE.MeshBasicMaterial({ color: c, side: THREE.DoubleSide, transparent: true, opacity: o, depthTest: true });
+  ring.add(new THREE.Mesh(new THREE.RingGeometry(0.016, 0.021, 48), rmat(0x00e5ff)));
+  const outer = new THREE.Group();
+  for (let k = 0; k < 4; k++) outer.add(new THREE.Mesh(new THREE.RingGeometry(0.03, 0.034, 16, 1, k * Math.PI / 2 + 0.25, Math.PI / 2 - 0.5), rmat(0xff3df0, 0.9)));
+  ring.add(outer);
   ring.visible = false;
   scene.add(ring);
+
+  // scanner beam: a glowing meridian arc with a trailing curtain, swept around the globe
+  const beam = new THREE.Group();
+  const arc = new THREE.Mesh(new THREE.TorusGeometry(1.012, 0.0035, 8, 160, Math.PI), new THREE.MeshBasicMaterial({ color: 0x9ff6ff, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending, depthWrite: false }));
+  arc.rotation.z = -Math.PI / 2;
+  const W = 0.35;
+  const curtain = new THREE.Mesh(new THREE.SphereGeometry(1.01, 12, 48, Math.PI - W, W), new THREE.MeshBasicMaterial({ color: 0x00e5ff, transparent: true, opacity: 0.16, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide }));
+  beam.add(arc, curtain);
+  beam.visible = false;
+  scene.add(beam);
+  let scanState = null;
+
+  // hunt pins + great-circle arc
+  const pins = new THREE.Group();
+  scene.add(pins);
 
   const ray = new THREE.Raycaster();
   const ndc = new THREE.Vector2();
@@ -130,7 +151,7 @@ export function createEarth(canvas, { texture }) {
     const r = canvas.getBoundingClientRect();
     ndc.set(((ev.clientX - r.left) / r.width) * 2 - 1, -((ev.clientY - r.top) / r.height) * 2 + 1);
     ray.setFromCamera(ndc, cam);
-    const front = (h) => h.object.material.opacity > 0;
+    const front = (h) => h.object.material.opacity > 0 && h.object.parent.visible;
     const hm = ray.intersectObjects(markers.children, false).filter(front);
     if (hm.length) return { marker: hm[0].object.userData };
     const hk = known.visible ? ray.intersectObjects(known.children, false).filter(front) : [];
@@ -159,13 +180,41 @@ export function createEarth(canvas, { texture }) {
   function setMarkers(list) {
     markers.clear();
     list.forEach((m, k) => {
-      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: badgeTexture(String(k + 1), m.isNew ? "#6fe0b0" : "#ffb347"), depthTest: true }));
+      const col = m.grade === "S" ? "#ff3df0" : m.isNew ? "#7cffb2" : "#00e5ff";
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: badgeTexture(String(k + 1), col, "#02040a", "#e9fdff"), depthTest: true }));
       s.position.copy(vec3(m.lat, m.lon, 1.03));
       s.scale.setScalar(0.055);
-      s.userData = { ...m, rank: k };
+      s.userData = { ...m, rank: k, base: 0.055, pulse: k < 3 };
       s.renderOrder = 3;
       markers.add(s);
     });
+  }
+  function setPins(list) {
+    pins.clear();
+    for (const p of list) {
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: badgeTexture(p.text, p.color, "#02040a", "#ffffff"), depthTest: true }));
+      s.position.copy(vec3(p.lat, p.lon, 1.035));
+      s.scale.setScalar(0.07);
+      s.userData = { base: 0.07, pulse: true };
+      pins.add(s);
+    }
+    if (list.length >= 2) {
+      const a = vec3(list[0].lat, list[0].lon, 1), b = vec3(list[1].lat, list[1].lon, 1);
+      const pts = [];
+      const ang = a.angleTo(b);
+      for (let k = 0; k <= 64; k++) {
+        const t = k / 64;
+        const v = a.clone().multiplyScalar(Math.sin((1 - t) * ang)).add(b.clone().multiplyScalar(Math.sin(t * ang))).divideScalar(Math.sin(ang) || 1);
+        pts.push(v.normalize().multiplyScalar(1.01 + 0.08 * Math.sin(Math.PI * t) * Math.min(1, ang)));
+      }
+      const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineDashedMaterial({ color: 0xffd23f, dashSize: 0.02, gapSize: 0.012 }));
+      line.computeLineDistances();
+      pins.add(line);
+    }
+  }
+  function scan(lon0 = 0, dur = 1.2, onProgress = null) {
+    scanState = { lon0, dur, t: 0, onProgress, start: performance.now() };
+    beam.visible = true;
   }
   function setKnown(list) {
     known.clear();
@@ -189,7 +238,7 @@ export function createEarth(canvas, { texture }) {
     const from = cam.position.clone();
     const d = dist ?? Math.min(from.length(), 2.6);
     const to = vec3(lat, lon, 1).multiplyScalar(d);
-    fly = { from, to, t: 0 };
+    fly = { from, to, t: 0, start: performance.now() };
   }
 
   let last = performance.now();
@@ -198,7 +247,7 @@ export function createEarth(canvas, { texture }) {
     last = now;
     fitRenderer(R, cam, canvas);
     if (fly) {
-      fly.t = Math.min(1, fly.t + dt / 1.1);
+      fly.t = Math.min(1, (now - fly.start) / 1100);
       const e = fly.t < 0.5 ? 2 * fly.t * fly.t : 1 - (-2 * fly.t + 2) ** 2 / 2;
       const a = fly.from.clone().normalize(), b = fly.to.clone().normalize();
       const q = new THREE.Quaternion().setFromUnitVectors(a, b);
@@ -211,9 +260,22 @@ export function createEarth(canvas, { texture }) {
     }
     sun.position.copy(cam.position).applyAxisAngle(new THREE.Vector3(0, 1, 0), 0.5).add(new THREE.Vector3(0, 1.5, 0));
     controls.update();
+    if (scanState) {
+      scanState.t = Math.min(1, (now - scanState.start) / (scanState.dur * 1000)); // wall-clock, not frame-rate bound
+      const lon = scanState.lon0 + 360 * scanState.t;
+      beam.rotation.y = (lon * Math.PI) / 180;
+      scanState.onProgress?.(scanState.t);
+      if (scanState.t >= 1) { beam.visible = false; scanState = null; }
+    }
+    if (ring.visible) outer.rotation.z += dt * 1.6;
+    const pulse = 1 + 0.18 * Math.sin(now / 180);
     // fade markers on the far side
     const cdir = cam.position.clone().normalize();
-    for (const g of [markers, known]) for (const s of g.children) s.material.opacity = s.position.clone().normalize().dot(cdir) > 0.05 ? 1 : 0;
+    for (const g of [markers, known, pins]) for (const s of g.children) {
+      if (!s.isSprite) continue;
+      s.material.opacity = s.position.clone().normalize().dot(cdir) > 0.05 ? 1 : 0;
+      if (s.userData.pulse) s.scale.setScalar(s.userData.base * pulse);
+    }
     R.render(scene, cam);
     requestAnimationFrame(frame);
   }
@@ -222,8 +284,10 @@ export function createEarth(canvas, { texture }) {
   return {
     overlayCanvas: ovCanvas,
     refreshOverlay() { ovTex.needsUpdate = true; },
-    setMarkers, setKnown, select, flyTo,
+    setMarkers, setKnown, select, flyTo, setPins, scan,
     showKnown(v) { known.visible = v; },
+    showMarkers(v) { markers.visible = v; },
+    viewLon() { return latLonOf(cam.position).lon; },
     onPick(cb) { pickCb = cb; }, onHover(cb) { hoverCb = cb; }, onMarker(cb) { markerCb = cb; },
     stopSpin() { idleSpin = false; },
     snapshot() { return canvas.toDataURL("image/png"); },

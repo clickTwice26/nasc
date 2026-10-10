@@ -110,3 +110,15 @@ test("lunar lighting matches Earth's high latitudes, not the tropics", () => {
   const r0 = E.cdf(grid, "lowsun", ideals.lowsun.ideal);
   assert.ok(r0 > 0.9, "lunar south pole maps to Earth's lowest-Sun cells");
 });
+
+test("grades are monotonic in score; Earth twins the lava pit better than the lunar pole", () => {
+  const order = ["D", "C", "B", "A", "S"];
+  let prev = 0;
+  for (const v of [0, 0.29, 0.3, 0.45, 0.59, 0.6, 0.74, 0.75, 1]) {
+    const k = order.indexOf(E.gradeOf(v));
+    assert.ok(k >= prev, `grade dropped at ${v}`);
+    prev = k;
+  }
+  const best = (id) => { const S = E.scoreGrid(grid, E.modelFor(grid, byId(id), E.PRESETS.balanced.w)); return S[E.topSites(grid, S, { k: 1 })[0]]; };
+  assert.ok(best("moon-tranquillitatis-pit") > best("moon-malapert-massif"), "airless −100 °C pole is harder to twin than a lava pit");
+});
